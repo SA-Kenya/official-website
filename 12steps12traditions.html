@@ -4,7 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="format-detection" content="telephone=no">
-<title>SA Kenya</title>
+<title>12 Steps & 12 Traditions – SA Kenya</title>
+<link rel="canonical" href="https://yourusername.github.io/your-repo/12steps12traditions.html">
+<!-- Open Graph -->
+<meta property="og:title" content="12 Steps & 12 Traditions – SA Kenya">
+<meta property="og:description" content="Read about the 12 Steps and 12 Traditions of Sexaholics Anonymous as practiced by SA Kenya.">
+<meta property="og:image" content="assets/images/SA-logo.png">
+<meta property="og:url" content="https://yourusername.github.io/your-repo/12steps12traditions.html">
+<meta property="og:type" content="website">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="12 Steps & 12 Traditions – SA Kenya">
+<meta name="twitter:description" content="Read about the 12 Steps and 12 Traditions of Sexaholics Anonymous as practiced by SA Kenya.">
+<meta name="twitter:image" content="assets/images/SA-logo.png">
 <meta name="author" content="SA Kenya">
 <meta name="description" content="SA Description that shows up in search engine results">
 <meta name="keywords" content="sex, masturbation, prostitution, addiction, lust, fantasy, pornography, obsession, sexual thoughts, sexual behaviour, out of control">
@@ -22,6 +34,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
 <link rel="stylesheet" href="assets/css/color.css">
+<link rel="stylesheet" href="assets/css/floating-wpp.min.css">
 </head>
 <body>
 <div id="dtr-wrapper" class="clearfix"> 
@@ -40,7 +53,7 @@
         <div class="container"> 
             
             <!-- small devices logo --> 
-            <a href="index.html"><img src="assets/images/SA-logo.png" alt="logo"></a> 
+            <a href="index.html"><img src="assets/images/SA-logo.png" alt="Sexaholics Anonymous Kenya logo" loading="lazy"></a> 
             <!-- small devices logo ends --> 
             
             <!-- menu button -->
@@ -61,10 +74,10 @@
                 <div class="dtr-header-left"> 
                     
                     <!-- logo --> 
-                    <a class="logo-default dtr-scroll-link" href="index.html"><img src="assets/images/SA-logo.png" alt="logo"></a> 
+                    <a class="logo-default dtr-scroll-link" href="index.html"><img src="assets/images/SA-logo.png" alt="Sexaholics Anonymous Kenya logo" loading="lazy"></a> 
                     
                     <!-- logo on scroll --> 
-                    <a class="logo-alt dtr-scroll-link" href="index.html"><img src="assets/images/SA-logo.png" alt="logo"></a> 
+                    <a class="logo-alt dtr-scroll-link" href="index.html"><img src="assets/images/SA-logo.png" alt="Sexaholics Anonymous Kenya logo" loading="lazy"></a> 
                     <!-- logo on scroll ends --> 
                     
                 </div>
@@ -76,7 +89,7 @@
                     <li class="nav-item"> <a class="nav-link" href="index.html">Home</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="problem.html">Problem</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="solution.html">Solution</a> </li>
-                    <li class="nav-item"> <a class="nav-link active" href="12steps12traditions.html">12 Steps & 12 Traditions</a> </li>
+                    <li class="nav-item"> <a class="nav-link active" href="12steps12traditions.html">12 Steps &amp; 12 Traditions</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="satest.html">Test Yourself</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="#contact" >Contact Us</a> </li> 
                     
@@ -102,9 +115,8 @@
                 
                 <!-- row starts -->
                 <div class="row dtr-pt-100"> 
-                    
-                    
-                        <h4>The 12 Steps   <span class="color-orange">of Sexaholics Anonymous</span></h4>
+                    <h1>12 Steps &amp; 12 Traditions</h1>
+                    <h2>The 12 Steps   <span class="color-orange">of Sexaholics Anonymous</span></h2>
                        
                             <ol>
                                 <li>We admitted that we were powerless over lust—that our lives had become unmanageable.</li>
@@ -132,7 +144,7 @@
                  <!-- row starts -->
                  <div class="row dtr-pt-100">
 
-                    <h4>The 12 Traditions   <span class="color-orange">of Sexaholics Anonymous</span></h4>
+                    <h2>The 12 Traditions   <span class="color-orange">of Sexaholics Anonymous</span></h2>
                        
                     <ol>
                         <li>Our common welfare should come first; personal recovery depends on SA unity.</li>
@@ -240,5 +252,25 @@
 <script src="assets/js/bootstrap.min.js"></script> 
 <script src="assets/js/plugins.js"></script> 
 <script src="assets/js/custom.js"></script>
+<!-- JS FILES for WhatsApp Widget -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="assets/js/floating-wpp.min.js"></script>
+<script>
+    $(function() {
+        $('#whatsapp-widget').floatingWhatsApp({
+            phone: '+254782507625',
+            popupMessage: 'Hello, I would like to know more about the 12 Steps & 12 Traditions...',
+            showPopup: true,
+            position: 'right',
+            headerTitle: 'Chat with SA Kenya',
+            message: 'Hello, I would like to know more about the 12 Steps & 12 Traditions...',
+            zIndex: 1000
+        });
+    });
+</script>
+
+<!-- Elfsight WhatsApp Chat Widget -->
+<script src="https://static.elfsight.com/platform/platform.js" async></script>
+<div class="elfsight-app-4137842b-17fe-48d6-b967-88261cbbe2e2" data-elfsight-app-lazy></div>
 </body>
 </html>

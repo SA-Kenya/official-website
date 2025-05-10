@@ -4,7 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="format-detection" content="telephone=no">
-<title>SA Kenya</title>
+<title>SA Kenya – 12 Step Recovery from Sex and Lust Addiction</title>
+<link rel="canonical" href="https://yourusername.github.io/your-repo/index.html">
+<!-- Open Graph -->
+<meta property="og:title" content="SA Kenya – 12 Step Recovery from Sex and Lust Addiction">
+<meta property="og:description" content="Find hope and support with Sexaholics Anonymous Kenya. Learn about the 12 Steps, recovery, and connect with our fellowship.">
+<meta property="og:image" content="assets/images/SA-logo.png">
+<meta property="og:url" content="https://yourusername.github.io/your-repo/index.html">
+<meta property="og:type" content="website">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SA Kenya – 12 Step Recovery from Sex and Lust Addiction">
+<meta name="twitter:description" content="Find hope and support with Sexaholics Anonymous Kenya. Learn about the 12 Steps, recovery, and connect with our fellowship.">
+<meta name="twitter:image" content="assets/images/SA-logo.png">
 <meta name="author" content="SA Kenya">
 <meta name="description" content="SA Description that shows up in search engine results">
 <meta name="keywords" content="sex, masturbation, prostitution, addiction, lust, fantasy, pornography, obsession, sexual thoughts, sexual behaviour, out of control">
@@ -22,6 +34,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
 <link rel="stylesheet" href="assets/css/color.css">
+<link rel="stylesheet" href="assets/css/floating-wpp.min.css">
 </head>
 <body>
 <div id="dtr-wrapper" class="clearfix"> 
@@ -40,7 +53,7 @@
         <div class="container"> 
             
             <!-- small devices logo --> 
-            <a href="index.html"><img src="assets/images/SA-logo.png" alt="logo"></a> 
+            <a href="index.html"><img src="assets/images/SA-logo.png" alt="Sexaholics Anonymous Kenya logo" loading="lazy"></a> 
             <!-- small devices logo ends --> 
             
             <!-- menu button -->
@@ -61,10 +74,10 @@
                 <div class="dtr-header-left"> 
                     
                     <!-- logo --> 
-                    <a class="logo-default dtr-scroll-link" href="#home"><img src="assets/images/SA-logo.png" alt="logo"></a> 
+                    <a class="logo-default dtr-scroll-link" href="#home"><img src="assets/images/SA-logo.png" alt="Sexaholics Anonymous Kenya logo" loading="lazy"></a> 
                     
                     <!-- logo on scroll --> 
-                    <a class="logo-alt dtr-scroll-link" href="#home"><img src="assets/images/SA-logo.png" alt="logo"></a> 
+                    <a class="logo-alt dtr-scroll-link" href="#home"><img src="assets/images/SA-logo.png" alt="Sexaholics Anonymous Kenya logo" loading="lazy"></a> 
                     <!-- logo on scroll ends --> 
                     
                 </div>
@@ -166,7 +179,7 @@
             <span class="divider-dashed border-purple"></span> 
             <!-- dashed divider ends -->
             
-            <div class="container dtr-py-50"> 
+            <div class="container dtr-py-30"> 
                 
                 <!-- heading -->
                 <h2 class="text-center dtr-mb-40 color-orange">Learn more</h2>
@@ -378,7 +391,7 @@
                                     
                                     <!-- column 1 starts -->
                                     <div class="col-12 col-md-5">
-                                         <img src="assets/images/women.png" alt="image"> 
+                                         <img src="assets/images/women.png" alt="Illustration of women for SA Kenya" loading="lazy"> 
                                          <!-- video button starts -->
                             <div class="dtr-video-button-wrapper">
                                 <div class="color-white"> <a class="dtr-video-popup dtr-video-button btn-grad-orange" data-autoplay="true" data-vbtype="video" href="https://vimeo.com/317879685"></a> </div>
@@ -481,8 +494,23 @@
 </div>
 <!-- #dtr-wrapper ends --> 
 
-<!-- JS FILES --> 
-<script src="assets/js/jquery.min.js"></script> 
+<!-- JS FILES -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="assets/js/floating-wpp.min.js"></script>
+<script>
+    $(function() {
+        $('#whatsapp-widget').floatingWhatsApp({
+            phone: '+254782507625',
+            popupMessage: 'Hello, how can we help you?',
+            showPopup: true,
+            position: 'right',
+            headerTitle: 'Chat with SA Kenya',
+            message: 'I would like to know more about SA Kenya...',
+            zIndex: 1000
+        });
+    });
+</script> 
+<!-- jQuery already loaded above --> 
 <script src="assets/js/bootstrap.min.js"></script> 
 <script src="assets/js/plugins.js"></script> 
 <script src="assets/js/custom.js"></script>
@@ -509,5 +537,8 @@
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
   </script>
+<!-- Elfsight WhatsApp Chat Widget -->
+<script src="https://static.elfsight.com/platform/platform.js" async></script>
+<div class="elfsight-app-4137842b-17fe-48d6-b967-88261cbbe2e2" data-elfsight-app-lazy></div>
 </body>
 </html>
