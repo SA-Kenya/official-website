@@ -4,33 +4,55 @@ import { pamphlets } from "../data/pamphlets";
 import { site } from "../data/site";
 
 const featuredPamphlets = pamphlets.filter((pamphlet) => pamphlet.featured).slice(0, 3);
+const waUrl = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
 ---
 
 <BaseLayout
   title="12 Step Recovery from Sex and Lust Addiction in Kenya"
-  description="Find hope, literature, and referral pathways through Sexaholics Anonymous Kenya, including Support for Institutions and Professionals."
+  description="If you are struggling with sex or lust addiction in Kenya, you are not alone—SA Kenya offers hope, fellowship, literature, and meetings. Support for Institutions and Professionals (SIP) is available for referral partners."
 >
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">Recovery, literature, and referral support</p>
+        <p class="eyebrow">You are not alone</p>
         <h1>12 Step recovery from sex and lust addiction in Kenya</h1>
         <p class="lede">
-          Sexaholics Anonymous Kenya is a fellowship of men and women who share experience,
-          strength, and hope so they may recover and help others recover. We now also offer
-          structured SIP resources for institutions and professionals who may encounter those who
-          still suffer.
+          If sex or lust addiction has left you feeling isolated, ashamed, or out of control, there is
+          a path to freedom—and you do not have to walk it alone. Sexaholics Anonymous Kenya is a
+          fellowship of men and women who share experience, strength, and hope through the Twelve
+          Steps, meetings, and literature so they may recover and help others recover. We also
+          offer <strong>Support for Institutions and Professionals (SIP)</strong> for therapists,
+          clergy, counselors, and organizations who support people who still suffer.
         </p>
         <div class="button-row">
-          <a class="button" href="/sip/" data-track-event="sip_cta_click" data-track-section="home-hero" data-track-label="visit-sip">Explore SIP</a>
-          <a class="button-secondary" href="/pamphlets/" data-track-event="sip_cta_click" data-track-section="home-hero" data-track-label="view-pamphlets">Browse Pamphlets</a>
-          <a class="button-ghost" href={`mailto:${site.email}`} data-track-event="professional_contact_click" data-track-section="home-hero" data-track-label="contact-home">Contact SA Kenya</a>
+          <a
+            class="button"
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track-event="whatsapp_click"
+            data-track-section="home-hero"
+            data-track-label="whatsapp-home-hero">Message on WhatsApp</a>
+          <a
+            class="button-secondary"
+            href="/pamphlets/"
+            data-track-event="cta_click"
+            data-track-section="home-hero"
+            data-track-label="view-pamphlets">Browse Pamphlets</a>
+          <a
+            class="button-ghost"
+            href="/sip/"
+            data-track-event="sip_cta_click"
+            data-track-section="home-hero"
+            data-track-label="visit-sip">Explore SIP</a>
+          <a
+            class="button-ghost"
+            href={`mailto:${site.email}`}
+            data-track-event="professional_contact_click"
+            data-track-section="home-hero"
+            data-track-label="contact-home-email">Email SA Kenya</a>
         </div>
         <div class="stats">
-          <div class="card stat">
-            <strong>SIP</strong>
-            <span>Support for Institutions and Professionals</span>
-          </div>
           <div class="card stat">
             <strong>17</strong>
             <span>Official SA pamphlets hosted for local access</span>
@@ -38,6 +60,10 @@ const featuredPamphlets = pamphlets.filter((pamphlet) => pamphlet.featured).slic
           <div class="card stat">
             <strong>2</strong>
             <span>Audience-specific outreach tracks for professionals and clergy</span>
+          </div>
+          <div class="card stat">
+            <strong>SIP</strong>
+            <span>Support for Institutions and Professionals</span>
           </div>
         </div>
       </div>

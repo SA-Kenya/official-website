@@ -131,7 +131,7 @@ li {
 }
 
 .hero {
-  padding: 8rem 0 4rem;
+  padding: clamp(3rem, 2rem + 3vw, 5rem) 0 4rem;
 }
 
 .hero-grid {
@@ -456,10 +456,6 @@ li {
     border-radius: 18px;
     background: rgba(255, 253, 249, 0.98);
     box-shadow: var(--shadow);
-  }
-
-  .hero {
-    padding-top: 6rem;
   }
 
   .button-row {
