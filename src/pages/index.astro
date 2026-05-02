@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { pamphlets } from "../data/pamphlets";
+import { site } from "../data/site";
+
+const featuredPamphlets = pamphlets.filter((pamphlet) => pamphlet.featured).slice(0, 3);
+---
+
+<BaseLayout
+  title="12 Step Recovery from Sex and Lust Addiction in Kenya"
+  description="Find hope, literature, and referral pathways through Sexaholics Anonymous Kenya, including Support for Institutions and Professionals."
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Recovery, literature, and referral support</p>
+        <h1>12 Step recovery from sex and lust addiction in Kenya</h1>
+        <p class="lede">
+          Sexaholics Anonymous Kenya is a fellowship of men and women who share experience,
+          strength, and hope so they may recover and help others recover. We now also offer
+          structured SIP resources for institutions and professionals who may encounter those who
+          still suffer.
+        </p>
+        <div class="button-row">
+          <a class="button" href="/sip/" data-track-event="sip_cta_click" data-track-section="home-hero" data-track-label="visit-sip">Explore SIP</a>
+          <a class="button-secondary" href="/pamphlets/" data-track-event="sip_cta_click" data-track-section="home-hero" data-track-label="view-pamphlets">Browse Pamphlets</a>
+          <a class="button-ghost" href={`mailto:${site.email}`} data-track-event="professional_contact_click" data-track-section="home-hero" data-track-label="contact-home">Contact SA Kenya</a>
+        </div>
+        <div class="stats">
+          <div class="card stat">
+            <strong>SIP</strong>
+            <span>Support for Institutions and Professionals</span>
+          </div>
+          <div class="card stat">
+            <strong>17</strong>
+            <span>Official SA pamphlets hosted for local access</span>
+          </div>
+          <div class="card stat">
+            <strong>2</strong>
+            <span>Audience-specific outreach tracks for professionals and clergy</span>
+          </div>
+        </div>
+      </div>
+      <div class="card hero-panel">
+        <img src="/assets/images/intro1.png" alt="Sunrise scene representing hope and recovery" />
+        <div class="overlay-text">
+          <p class="eyebrow">For individuals and referral partners</p>
+          <p>
+            Learn what SA is, understand the path to recovery, and access practical resources for
+            referral and follow-up.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <p class="eyebrow">Core pages</p>
+      <div class="card-grid">
+        <article class="highlight col-4">
+          <h3>The Problem</h3>
+          <p>Understand the emotional, spiritual, and behavioral reality of sex and lust addiction.</p>
+          <a href="/problem/">Read the problem</a>
+        </article>
+        <article class="highlight col-4">
+          <h3>The Solution</h3>
+          <p>Explore the recovery pathway, surrender, fellowship, and spiritual change described by SA.</p>
+          <a href="/solution/">Read the solution</a>
+        </article>
+        <article class="highlight col-4">
+          <h3>Test Yourself</h3>
+          <p>Use the 20-question self-assessment to reflect honestly on sexual thinking and behavior.</p>
+          <a href="/test-yourself/">Open the self-test</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container card-grid">
+      <div class="content-shell col-7">
+        <p class="eyebrow">Support for Institutions and Professionals</p>
+        <h2>A practical referral hub for institutions, counselors, clergy, and helping professionals</h2>
+        <p>
+          SIP stands for <strong>Support for Institutions and Professionals</strong>. It is designed
+          to help therapists, counselors, pastors, priests, rehab teams, and other institutions
+          understand what Sexaholics Anonymous is, when it may help, and how to refer someone
+          appropriately.
+        </p>
+        <div class="button-row">
+          <a class="button" href="/sip/" data-track-event="sip_cta_click" data-track-section="home-sip" data-track-label="sip-hub">Visit the SIP hub</a>
+          <a class="button-secondary" href="/sip/professionals/" data-track-event="sip_cta_click" data-track-section="home-sip" data-track-label="sip-professionals">For professionals</a>
+          <a class="button-ghost" href="/sip/clergy/" data-track-event="sip_cta_click" data-track-section="home-sip" data-track-label="sip-clergy">For clergy</a>
+        </div>
+      </div>
+      <aside class="quote-panel col-5">
+        <p class="eyebrow">Immediate priorities</p>
+        <ul class="list-clean">
+          <li>Build a reliable referral-facing web presence</li>
+          <li>Provide downloadable literature for outreach</li>
+          <li>Prepare professionals and institutions for a May awareness event</li>
+          <li>Create a clear follow-up path for post-event questions</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <p class="eyebrow">Featured literature</p>
+      <h2>Pamphlets ready for outreach, referral, and follow-up</h2>
+      <div class="card-grid">
+        {featuredPamphlets.map((pamphlet) => (
+          <article class="resource-card col-4">
+            <div class="meta">
+              {pamphlet.audience.map((group) => <span class="tag">{group}</span>)}
+            </div>
+            <h3>{pamphlet.title}</h3>
+            <p>{pamphlet.description}</p>
+            <div class="button-row">
+              <a
+                class="button-secondary"
+                href={pamphlet.file}
+                download
+                data-track-event="pamphlet_download"
+                data-track-file={pamphlet.slug}
+                data-track-section="home-featured-pamphlets"
+                data-track-label={pamphlet.title}
+                >Download PDF</a
+              >
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

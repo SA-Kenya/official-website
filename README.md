@@ -1,30 +1,29 @@
 # SA Kenya Website
 
-This is the official website for Sexaholics Anonymous Kenya, a fellowship of men and women who share their experience, strength, and hope with each other that they may solve their common problem and help others to recover.
+This repository now uses Astro to build the SA Kenya website for GitHub Pages.
 
-## About
+## Stack
 
-The website provides information about:
-- The SA program
-- The problem of sex and lust addiction
-- The solution through the 12-step program
-- The 12 Steps and 12 Traditions
-- Self-assessment tools
-- Contact information
+- Astro static site generation
+- GitHub Pages deployment via GitHub Actions
+- Markdown content collections for blog posts
+- Structured pamphlet metadata and GA4 event tracking
+
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+## Main sections
+
+- `/sip/` for Support for Institutions and Professionals
+- `/sip/professionals/` for therapists, counselors, rehab teams, and institutions
+- `/sip/clergy/` for pastors, priests, chaplains, and ministry leaders
+- `/pamphlets/` for the literature library
+- `/blog/` for outreach and site updates
 
 ## Deployment
 
-This website is designed to be hosted on GitHub Pages as a static site.
-
-## Structure
-
-- `index.html` - Home page
-- `problem.html` - Information about addiction issues
-- `solution.html` - Recovery approaches
-- `12steps12traditions.html` - The core principles
-- `satest.html` - Self-assessment questionnaire
-- `assets/` - Contains CSS, JavaScript, images, and fonts
-
-## Contact
-
-For more information, contact: sakenyanairobi@gmail.com
+Pushes to `main` trigger the GitHub Pages workflow in `.github/workflows/deploy.yml`.

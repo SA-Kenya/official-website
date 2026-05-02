@@ -1,0 +1,124 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { site } from "../../data/site";
+---
+
+<BaseLayout
+  title="Support for Institutions and Professionals"
+  description="SIP is SA Kenya's referral-facing resource hub for institutions, professionals, clergy, counselors, and helping services."
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">SIP</p>
+        <h1>Support for Institutions and Professionals</h1>
+        <p class="lede">
+          SIP is the public-facing resource hub for institutions and professionals who may encounter
+          suffering sexaholics. It exists to help referral partners understand the SA programme,
+          communicate clearly about it, and connect interested people to recovery support.
+        </p>
+        <div class="button-row">
+          <a class="button" href="/sip/professionals/" data-track-event="sip_cta_click" data-track-section="sip-hub-hero" data-track-label="professionals">For professionals</a>
+          <a class="button-secondary" href="/sip/clergy/" data-track-event="sip_cta_click" data-track-section="sip-hub-hero" data-track-label="clergy">For clergy</a>
+          <a class="button-ghost" href={`mailto:${site.email}`} data-track-event="professional_contact_click" data-track-section="sip-hub-hero" data-track-label="sip-email">Request a briefing</a>
+        </div>
+      </div>
+      <div class="card hero-panel">
+        <img src="/assets/images/introduction.png" alt="Two people seated in a supportive conversation" />
+        <div class="overlay-text">
+          <p class="eyebrow">Referral support</p>
+          <p>
+            Use this section to understand SA's role, review literature, and identify the right
+            next step for someone seeking help.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container card-grid">
+      <article class="highlight col-4">
+        <h3>What SIP means</h3>
+        <p>
+          SIP stands for <strong>Support for Institutions and Professionals</strong>. It is an
+          outreach and education function, not a separate treatment service.
+        </p>
+      </article>
+      <article class="highlight col-4">
+        <h3>Who it serves</h3>
+        <p>
+          Counselors, therapists, clergy, doctors, rehab programmes, schools, chaplaincy teams, and
+          institutions that may encounter people needing help for sex and lust addiction.
+        </p>
+      </article>
+      <article class="highlight col-4">
+        <h3>What it provides</h3>
+        <p>
+          Clear referral guidance, downloadable literature, educational outreach, and a contact path
+          for follow-up questions or office hours.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <article class="content-shell">
+        <p class="eyebrow">Professionals</p>
+        <h2>Clinical and institutional referral support</h2>
+        <p>
+          The professionals track is designed for therapists, counselors, psychologists, social
+          workers, rehab teams, physicians, and institutional leaders who need an accurate, concise
+          explanation of SA and how referral can work.
+        </p>
+        <a class="button" href="/sip/professionals/" data-track-event="sip_cta_click" data-track-section="sip-hub-track" data-track-label="track-professionals">Open professionals page</a>
+      </article>
+      <article class="content-shell">
+        <p class="eyebrow">Clergy</p>
+        <h2>Pastoral and ministry-facing support</h2>
+        <p>
+          The clergy track is tailored for pastors, priests, chaplains, and ministry counselors who
+          are supporting those in struggle and want to know how SA can complement pastoral care.
+        </p>
+        <a class="button-secondary" href="/sip/clergy/" data-track-event="sip_cta_click" data-track-section="sip-hub-track" data-track-label="track-clergy">Open clergy page</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container card-grid">
+      <div class="content-shell col-7">
+        <p class="eyebrow">Campaign priorities</p>
+        <h2>Current outreach focus</h2>
+        <ul class="list-clean">
+          <li>Contact gathering for therapists, pastors, priests, counselors, and institutions</li>
+          <li>Domain-based outreach email setup and campaign preparation</li>
+          <li>Awareness-event marketing and briefing preparation</li>
+          <li>Post-event follow-up through office hours and structured contact points</li>
+        </ul>
+        <div class="button-row">
+          <a
+            class="button-ghost"
+            href="/resources/sip-rehab-panel-meeting-format.pdf"
+            download
+            data-track-event="pamphlet_download"
+            data-track-file="sip-rehab-panel-meeting-format"
+            data-track-section="sip-hub-event"
+            data-track-label="SIP rehab panel meeting format"
+            >Download panel format</a
+          >
+        </div>
+      </div>
+      <aside class="cta-band col-5">
+        <p class="eyebrow">Awareness event</p>
+        <h3>Professional awareness event target: 27 May</h3>
+        <p>
+          Marketing is expected to begin on 6 May. This site section is designed to serve as the
+          landing page for invitations, referrals, and follow-up resources.
+        </p>
+        <a class="button-secondary" href="/blog/launching-sip-kenya/" data-track-event="event_interest_click" data-track-section="sip-hub-event" data-track-label="event-update">Read the outreach update</a>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

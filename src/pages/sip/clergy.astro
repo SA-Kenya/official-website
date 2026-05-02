@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { pamphlets } from "../../data/pamphlets";
+import { site } from "../../data/site";
+
+const clergyPamphlets = pamphlets.filter((pamphlet) =>
+  pamphlet.audience.includes("clergy")
+);
+---
+
+<BaseLayout
+  title="For Clergy"
+  description="Pastoral and ministry resources for clergy who want to understand Sexaholics Anonymous and refer those seeking recovery."
+>
+  <section class="section hero">
+    <div class="container">
+      <p class="eyebrow">Support for institutions and professionals</p>
+      <h1>For clergy</h1>
+      <p class="lede">
+        This page is for pastors, priests, chaplains, ministry leaders, and pastoral counselors who
+        may be walking with men and women affected by sex and lust addiction and want to understand
+        how SA may help.
+      </p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container split">
+      <article class="content-shell">
+        <h2>How SA relates to pastoral care</h2>
+        <p>
+          SA does not replace pastoral care, confession, discipleship, counseling, or spiritual
+          direction. It can complement them by providing a recovery fellowship and a disciplined
+          programme of shared accountability.
+        </p>
+      </article>
+      <article class="content-shell">
+        <h2>What clergy often need to know</h2>
+        <p>
+          Clergy often want to know whether SA is trustworthy, how its spiritual language functions,
+          and how to refer someone without confusing fellowship support with clinical or sacramental
+          care. This page addresses those questions directly.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container card-grid">
+      <article class="highlight col-4">
+        <h3>Referral language</h3>
+        <p>
+          A simple referral can be pastoral, respectful, and non-coercive: invite the person to
+          learn about SA and decide whether recovery in fellowship is the next step they are ready
+          to take.
+        </p>
+      </article>
+      <article class="highlight col-4">
+        <h3>Key distinction</h3>
+        <p>
+          SA is a fellowship of recovery, not a church, denomination, counseling practice, or
+          institution. Its role is peer support and Twelve Step recovery.
+        </p>
+      </article>
+      <article class="highlight col-4">
+        <h3>Use in ministry</h3>
+        <p>
+          Clergy can use this literature to recognize suffering, respond without panic, and connect
+          people to a recovery community without attempting to carry the burden alone.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <p class="eyebrow">Clergy resources</p>
+      <h2>Download literature for pastors, priests, and chaplains</h2>
+      <div class="card-grid">
+        {clergyPamphlets.map((pamphlet) => (
+          <article class="resource-card col-6">
+            <h3>{pamphlet.title}</h3>
+            <p>{pamphlet.description}</p>
+            <a
+              class="button-secondary"
+              href={pamphlet.file}
+              download
+              data-track-event="pamphlet_download"
+              data-track-file={pamphlet.slug}
+              data-track-section="sip-clergy"
+              data-track-audience="clergy"
+              data-track-label={pamphlet.title}
+              >Download PDF</a
+            >
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-shell">
+      <p class="eyebrow">Pastoral follow-up</p>
+      <h2>Request a clergy conversation</h2>
+      <p>
+        If your church, parish, ministry team, or chaplaincy context would benefit from an
+        introductory conversation about SA, contact SA Kenya and we can arrange a next step.
+      </p>
+      <div class="button-row">
+        <a class="button" href={`mailto:${site.email}`} data-track-event="professional_contact_click" data-track-section="sip-clergy-cta" data-track-label="clergy-email">Email SA Kenya</a>
+        <a class="button-ghost" href="/sip/" data-track-event="sip_cta_click" data-track-section="sip-clergy-cta" data-track-label="back-to-sip">Back to SIP</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

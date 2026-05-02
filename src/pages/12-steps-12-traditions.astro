@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const steps = [
+  "We admitted that we were powerless over lust, that our lives had become unmanageable.",
+  "Came to believe that a Power greater than ourselves could restore us to sanity.",
+  "Made a decision to turn our will and our lives over to the care of God as we understood Him.",
+  "Made a searching and fearless moral inventory of ourselves.",
+  "Admitted to God, to ourselves, and to another human being the exact nature of our wrongs.",
+  "Were entirely ready to have God remove all these defects of character.",
+  "Humbly asked Him to remove our shortcomings.",
+  "Made a list of all persons we had harmed, and became willing to make amends to them all.",
+  "Made direct amends to such people wherever possible, except when to do so would injure them or others.",
+  "Continued to take personal inventory and when we were wrong, promptly admitted it.",
+  "Sought through prayer and meditation to improve our conscious contact with God as we understood Him, praying only for knowledge of His will for us and the power to carry that out.",
+  "Having had a spiritual awakening as the result of these Steps, we tried to carry this message to sexaholics, and to practice these principles in all our affairs.",
+];
+
+const traditions = [
+  "Our common welfare should come first; personal recovery depends on SA unity.",
+  "For our group purpose there is but one ultimate authority, a loving God as He may express Himself in our group conscience. Our leaders are but trusted servants; they do not govern.",
+  "The only requirement for membership is a desire to stop lusting and become sexually sober.",
+  "Each group should be autonomous except in matters affecting other groups or Sexaholics Anonymous as a whole.",
+  "Each group has but one primary purpose, to carry its message to the sexaholic who still suffers.",
+  "An SA group ought never endorse, finance, or lend the SA name to any related facility or outside enterprise, lest problems of money, property, and prestige divert us from our primary purpose.",
+  "Every SA group ought to be fully self-supporting, declining outside contributions.",
+  "Sexaholics Anonymous should remain forever non-professional, but our service centers may employ special workers.",
+  "SA, as such, ought never be organized; but we may create service boards or committees directly responsible to those they serve.",
+  "Sexaholics Anonymous has no opinion on outside issues; hence the SA name ought never be drawn into public controversy.",
+  "Our public relations policy is based on attraction rather than promotion; we need always maintain personal anonymity at the level of press, radio, films, and TV.",
+  "Anonymity is the spiritual foundation of all our traditions, ever reminding us to place principles before personalities.",
+];
+---
+
+<BaseLayout
+  title="12 Steps and 12 Traditions"
+  description="Read the Twelve Steps and Twelve Traditions used by Sexaholics Anonymous Kenya."
+>
+  <section class="section hero">
+    <div class="container">
+      <p class="eyebrow">Foundational texts</p>
+      <h1>The 12 Steps and the 12 Traditions</h1>
+      <p class="lede">
+        These principles remain central to the spiritual and communal life of Sexaholics Anonymous.
+      </p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container split">
+      <article class="content-shell">
+        <h2>The 12 Steps</h2>
+        <ol>
+          {steps.map((step) => <li>{step}</li>)}
+        </ol>
+      </article>
+      <article class="content-shell">
+        <h2>The 12 Traditions</h2>
+        <ol>
+          {traditions.map((tradition) => <li>{tradition}</li>)}
+        </ol>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container quote-panel">
+      <p>
+        The Twelve Steps and Traditions are adapted with permission of Alcoholics Anonymous World
+        Services, Inc. Permission to adapt and reprint them does not mean AAWS has approved the
+        contents of this publication, nor that AAWS agrees with the views expressed herein.
+      </p>
+      <p>SA Literature © 1982, 1984, 1989, 2001. Reprinted with permission of SA Literature.</p>
+    </div>
+  </section>
+</BaseLayout>

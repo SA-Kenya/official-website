@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { pamphlets } from "../../data/pamphlets";
+import { site } from "../../data/site";
+
+const professionalPamphlets = pamphlets.filter((pamphlet) =>
+  pamphlet.audience.includes("professionals")
+);
+---
+
+<BaseLayout
+  title="For Professionals"
+  description="Referral resources for therapists, counselors, doctors, rehab programmes, and helping professionals who may encounter sex and lust addiction."
+>
+  <section class="section hero">
+    <div class="container">
+      <p class="eyebrow">Support for institutions and professionals</p>
+      <h1>For professionals</h1>
+      <p class="lede">
+        This page is for therapists, counselors, psychologists, physicians, social workers, rehab
+        programmes, university wellness teams, and other helping professionals who want a clear view
+        of what SA is and how referral may help.
+      </p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container split">
+      <article class="content-shell">
+        <h2>What SA is</h2>
+        <p>
+          Sexaholics Anonymous is a Twelve Step recovery fellowship for men and women who want to
+          stop lusting and become sexually sober. It is peer-based and spiritually grounded, but it
+          is not a clinic, not a therapy practice, and not a crisis service.
+        </p>
+      </article>
+      <article class="content-shell">
+        <h2>How professionals can use SA</h2>
+        <p>
+          SA can serve as a community-based recovery referral for individuals who identify with sex
+          and lust addiction and are willing to engage in ongoing recovery support outside the
+          consulting room or institution.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container card-grid">
+      <article class="highlight col-4">
+        <h3>When referral may help</h3>
+        <p>
+          Persistent compulsive sexual behavior, escalating pornography use, repeated acting out,
+          shame cycles, secrecy, and inability to stop despite consequences.
+        </p>
+      </article>
+      <article class="highlight col-4">
+        <h3>What referral is not</h3>
+        <p>
+          Referral to SA does not replace therapy, psychiatric care, trauma work, safeguarding, or
+          crisis intervention when those are needed.
+        </p>
+      </article>
+      <article class="highlight col-4">
+        <h3>What good referral sounds like</h3>
+        <p>
+          “There is a recovery fellowship you may want to explore. You can review the literature,
+          learn how it works, and decide whether it fits your recovery needs.”
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <p class="eyebrow">Professional resources</p>
+      <h2>Download literature for referral and awareness work</h2>
+      <div class="card-grid">
+        {professionalPamphlets.map((pamphlet) => (
+          <article class="resource-card col-4">
+            <h3>{pamphlet.title}</h3>
+            <p>{pamphlet.description}</p>
+            <a
+              class="button-secondary"
+              href={pamphlet.file}
+              download
+              data-track-event="pamphlet_download"
+              data-track-file={pamphlet.slug}
+              data-track-section="sip-professionals"
+              data-track-audience="professional"
+              data-track-label={pamphlet.title}
+              >Download PDF</a
+            >
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-shell">
+      <p class="eyebrow">Next step</p>
+      <h2>Request a professional briefing</h2>
+      <p>
+        SA Kenya is preparing focused outreach for professionals and institutions. If you would like
+        a briefing conversation, a literature pack, or a follow-up after the professional awareness
+        event, contact us directly.
+      </p>
+      <div class="button-row">
+        <a class="button" href={`mailto:${site.email}`} data-track-event="professional_contact_click" data-track-section="sip-professionals-cta" data-track-label="briefing-email">Email for a briefing</a>
+        <a class="button-ghost" href="/pamphlets/" data-track-event="sip_cta_click" data-track-section="sip-professionals-cta" data-track-label="all-pamphlets">View full library</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
