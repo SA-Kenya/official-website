@@ -1,17 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap");
 
 :root {
-  --bg: #f7f1e8;
-  --surface: #fffdf9;
-  --surface-strong: #f2e6d4;
-  --ink: #203041;
-  --muted: #5f6b73;
-  --line: rgba(32, 48, 65, 0.14);
-  --brand: #a34a1f;
-  --brand-deep: #7f3512;
-  --accent: #1c6b67;
-  --accent-soft: #dfeee8;
-  --shadow: 0 20px 45px rgba(33, 40, 48, 0.08);
+  /* Legacy theme alignment: color.css (purple + orange) */
+  --bg: #fff4e3;
+  --surface: #fffef9;
+  --surface-strong: #f5ead8;
+  --ink: #220033;
+  --muted: #594066;
+  --line: rgba(34, 0, 51, 0.12);
+  --brand: #ff980e;
+  --brand-deep: #d9770a;
+  --accent: #ff980e;
+  --accent-purple: #220033;
+  --accent-soft: rgba(255, 152, 14, 0.14);
+  --shadow: 0 20px 45px rgba(34, 0, 51, 0.08);
   --radius: 24px;
 }
 
@@ -30,8 +32,9 @@ body {
   font-family: "Source Sans 3", sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(28, 107, 103, 0.12), transparent 28%),
-    linear-gradient(180deg, #faf5ee 0%, #f6efe4 100%);
+    radial-gradient(circle at top left, rgba(255, 152, 14, 0.08), transparent 32%),
+    radial-gradient(circle at 80% 0%, rgba(34, 0, 51, 0.06), transparent 26%),
+    linear-gradient(180deg, #fff8f0 0%, #fff4e3 100%);
   line-height: 1.65;
 }
 
@@ -41,6 +44,10 @@ img {
 }
 
 a {
+  color: var(--brand);
+}
+
+a:hover {
   color: var(--brand-deep);
 }
 
@@ -95,7 +102,7 @@ li {
 }
 
 .section.alt {
-  background: rgba(255, 253, 249, 0.7);
+  background: rgba(255, 244, 227, 0.85);
   border-block: 1px solid var(--line);
 }
 
@@ -154,7 +161,7 @@ li {
   position: absolute;
   inset: auto 1.5rem 1.5rem;
   color: white;
-  background: linear-gradient(135deg, rgba(26, 39, 53, 0.86), rgba(28, 107, 103, 0.78));
+  background: linear-gradient(135deg, rgba(34, 0, 51, 0.9), rgba(255, 152, 14, 0.72));
   padding: 1.2rem;
   border-radius: 20px;
   max-width: 22rem;
@@ -189,19 +196,27 @@ li {
 
 .button {
   color: white;
-  background: linear-gradient(135deg, var(--brand), #bf6c30);
-  box-shadow: 0 14px 30px rgba(163, 74, 31, 0.25);
+  background: linear-gradient(135deg, #ff980e, #fd5a49);
+  box-shadow: 0 14px 30px rgba(255, 152, 14, 0.35);
+}
+
+.button:hover {
+  color: white;
 }
 
 .button-secondary {
   color: var(--ink);
-  background: linear-gradient(135deg, #f1ddc2, #eed7b3);
+  background: linear-gradient(135deg, #efe5d8, #e8dcc8);
 }
 
 .button-ghost {
-  color: var(--accent);
-  border: 1px solid rgba(28, 107, 103, 0.25);
-  background: rgba(223, 238, 232, 0.55);
+  color: var(--accent-purple);
+  border: 1px solid rgba(255, 152, 14, 0.45);
+  background: rgba(255, 244, 227, 0.9);
+}
+
+.button-ghost:hover {
+  color: var(--accent-purple);
 }
 
 .site-header {
@@ -209,7 +224,7 @@ li {
   top: 0;
   z-index: 20;
   backdrop-filter: blur(12px);
-  background: rgba(250, 245, 238, 0.82);
+  background: rgba(255, 244, 227, 0.88);
   border-bottom: 1px solid var(--line);
 }
 
@@ -264,8 +279,8 @@ li {
 
 .main-nav a.active,
 .main-nav a:hover {
-  background: rgba(28, 107, 103, 0.1);
-  color: var(--accent);
+  background: rgba(255, 152, 14, 0.18);
+  color: var(--brand-deep);
 }
 
 .stats {
@@ -315,7 +330,7 @@ li {
 }
 
 .quote-panel {
-  background: linear-gradient(135deg, rgba(28, 107, 103, 0.08), rgba(163, 74, 31, 0.08));
+  background: linear-gradient(135deg, rgba(34, 0, 51, 0.06), rgba(255, 152, 14, 0.1));
 }
 
 .list-clean,
@@ -342,14 +357,14 @@ li {
   padding: 0.3rem 0.65rem;
   border-radius: 999px;
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-purple);
   font-size: 0.88rem;
   font-weight: 700;
 }
 
 .cta-band {
   padding: 2rem;
-  background: linear-gradient(135deg, #213041, #2f5e5a);
+  background: linear-gradient(135deg, #220033, #4a1d5c);
   color: white;
 }
 
@@ -382,7 +397,7 @@ li {
 .site-footer {
   padding: 4rem 0;
   border-top: 1px solid var(--line);
-  background: rgba(255, 253, 249, 0.9);
+  background: rgba(255, 248, 238, 0.95);
 }
 
 .footer-grid {
@@ -422,7 +437,7 @@ li {
     cursor: pointer;
     padding: 0.7rem 1rem;
     border-radius: 999px;
-    background: rgba(28, 107, 103, 0.1);
+    background: rgba(255, 152, 14, 0.15);
     font-weight: 700;
   }
 

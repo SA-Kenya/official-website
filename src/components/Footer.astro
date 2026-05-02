@@ -1,5 +1,8 @@
 ---
 import { site } from "../data/site";
+
+const waDigits = site.whatsapp.replace(/\D/g, "");
+const waUrl = `https://wa.me/${waDigits}`;
 ---
 
 <footer class="site-footer">
@@ -19,6 +22,18 @@ import { site } from "../data/site";
           data-track-label="email-footer"
           >{site.email}</a
         >
+      </p>
+      <p class="footer-whatsapp">
+        <a
+          href={waUrl}
+          rel="noopener noreferrer"
+          target="_blank"
+          data-track-event="whatsapp_click"
+          data-track-section="footer"
+          data-track-label="whatsapp-footer"
+        >
+          WhatsApp {site.whatsapp}
+        </a>
       </p>
     </div>
     <div>
