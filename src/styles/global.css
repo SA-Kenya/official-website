@@ -245,18 +245,10 @@ li {
 }
 
 .brand img {
-  width: 48px;
-  height: 48px;
-}
-
-.brand span {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.brand small {
-  color: var(--muted);
+  display: block;
+  width: auto;
+  height: 50px;
+  max-width: min(280px, 55vw);
 }
 
 .nav-shell summary {
@@ -467,5 +459,108 @@ li {
   .button-secondary,
   .button-ghost {
     width: 100%;
+  }
+}
+
+.bg-light-purple {
+  background-color: #f8f5ff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bg-light-purple:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dtr-alert {
+  padding: 15px 20px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.dtr-alert-info {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+  border-left: 5px solid #2196f3;
+}
+
+.dtr-alert i {
+  font-size: 1.4rem;
+}
+
+.site-footer .sa-footer-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr 0.9fr 1fr;
+  gap: 1.5rem;
+}
+
+.site-footer .sa-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.site-footer .sa-footer-logo {
+  width: 72px;
+  height: auto;
+}
+
+.site-footer .sa-footer-tagline,
+.site-footer .sa-footer-cta {
+  margin: 0;
+}
+
+.site-footer .sa-footer-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  background: #25d366;
+}
+
+.site-footer .sa-footer-heading {
+  margin: 0 0 0.25rem;
+  font-family: "Fraunces", serif;
+  font-size: 1.15rem;
+}
+
+.site-footer .sa-footer-list {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.site-footer .sa-footer-bottom {
+  margin-top: 1.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-footer .sa-footer-bottom p {
+  margin: 0;
+}
+
+@media (max-width: 920px) {
+  .site-footer .sa-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-footer .sa-footer-grid {
+    grid-template-columns: 1fr;
   }
 }

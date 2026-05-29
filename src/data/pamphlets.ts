@@ -13,6 +13,7 @@ export type Pamphlet = {
   audience: PamphletAudience[];
   file: string;
   sourceUrl: string;
+  image?: string;
   featured?: boolean;
 };
 
@@ -25,6 +26,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["professionals"],
     file: "/pamphlets/sa-resource-health-helping-professional.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=4241",
+    image: "/assets/pamphlets/images/SA-as-a-Resource-for-the-Health--Helping-Professional.jpg",
     featured: true,
   },
   {
@@ -35,6 +37,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["clergy"],
     file: "/pamphlets/members-of-the-clergy-ask-about-sa.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=9817",
+    image: "/assets/pamphlets/images/Members-of-the-Clergy-Ask-About-Sexaholics-Anonymous.jpg",
     featured: true,
   },
   {
@@ -45,6 +48,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["newcomers", "general"],
     file: "/pamphlets/to-the-newcomer.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=4236",
+    image: "/assets/pamphlets/images/To-The-Newcomer.jpg",
     featured: true,
   },
   {
@@ -55,6 +59,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["women", "professionals", "general"],
     file: "/pamphlets/sa-is-for-women.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=8208",
+    image: "/assets/pamphlets/images/SA-is-for-Women.png",
   },
   {
     title: "Am I Too Young to Be a Sexaholic?",
@@ -64,6 +69,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["general", "professionals"],
     file: "/pamphlets/am-i-too-young-to-be-a-sexaholic.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=8211",
+    image: "/assets/pamphlets/images/Am-I-Too-Young-to-Be-a-Sexaholic.jpg",
   },
   {
     title: "Do You Have a Problem with Pornography or Lust on the Internet?",
@@ -73,6 +79,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["general", "newcomers", "professionals"],
     file: "/pamphlets/problem-with-pornography-or-internet-lust.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=8217",
+    image: "/assets/pamphlets/images/Do-You-Have-a-Problem-with-Pornography-or-Lust-on-the-Internet.jpg",
   },
   {
     title: "First Find Your Dr. Bob",
@@ -82,6 +89,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["service", "general"],
     file: "/pamphlets/first-find-your-dr-bob.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=8220",
+    image: "/assets/pamphlets/images/First-Find-Your-Dr-Bob.png",
   },
   {
     title: "Practical Guidelines For Group Recovery",
@@ -91,6 +99,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["service", "general"],
     file: "/pamphlets/practical-guidelines-for-group-recovery.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=8215",
+    image: "/assets/pamphlets/images/Practical-Guidelines-For-Group-Recovery.jpg",
   },
   {
     title: "SA Check Meetings",
@@ -100,6 +109,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["service"],
     file: "/pamphlets/sa-check-meetings.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=8221",
+    image: "/assets/pamphlets/images/SA-Check-Meetings.jpg",
   },
   {
     title: "SA Sponsorship",
@@ -109,6 +119,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["general", "newcomers"],
     file: "/pamphlets/sa-sponsorship.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=4239",
+    image: "/assets/pamphlets/images/SA-Sponsorship.jpg",
   },
   {
     title: "So, You're Going to Prison?",
@@ -118,6 +129,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["service", "general"],
     file: "/pamphlets/so-youre-going-to-prison.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=8219",
+    image: "/assets/pamphlets/images/So-Youre-Going-to-Prison.png",
   },
   {
     title: "So, You're Leaving Prison?",
@@ -127,6 +139,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["service", "general"],
     file: "/pamphlets/so-youre-leaving-prison.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=8216",
+    image: "/assets/pamphlets/images/So-Youre-Leaving-Prison.png",
   },
   {
     title: "The SA Correctional Facilities Committee",
@@ -136,6 +149,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["service"],
     file: "/pamphlets/the-sa-correctional-facilities-committee.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=4243",
+    image: "/assets/pamphlets/images/The-SA-Correctional-Facilities-Committee.jpg",
   },
   {
     title: "The SA Home Group",
@@ -145,6 +159,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["general", "newcomers"],
     file: "/pamphlets/the-sa-home-group.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=8218",
+    image: "/assets/pamphlets/images/The-SA-Home-Group.jpg",
   },
   {
     title: "The Spirituality of Service",
@@ -154,6 +169,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["service", "clergy", "general"],
     file: "/pamphlets/the-spirituality-of-service.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=8214",
+    image: "/assets/pamphlets/images/The-Spirituality-of-Service.jpg",
   },
   {
     title: "Why Stop Lusting?",
@@ -163,6 +179,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["general", "newcomers"],
     file: "/pamphlets/why-stop-lusting.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=4228",
+    image: "/assets/pamphlets/images/Why-Stop-Lusting.jpg",
   },
   {
     title: "Why Working the Steps is Important",
@@ -172,6 +189,7 @@ export const pamphlets: Pamphlet[] = [
     audience: ["general", "newcomers"],
     file: "/pamphlets/why-working-the-steps-is-important.pdf",
     sourceUrl: "https://www.sa.org/?sdm_process_download=1&download_id=8209",
+    image: "/assets/pamphlets/images/Why-Working-the-Steps-is-Important.png",
   },
 ];
 

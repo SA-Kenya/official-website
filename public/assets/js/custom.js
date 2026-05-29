@@ -101,12 +101,14 @@ $(document).ready(function() {
 		pauseOnHover: false,
 	});
 	
-	// bootstrap nav dropdown hover
-	$('.nav-item.dropdown, .dropdown-menu, .dropdown-menu a, .nav-link.dropdown-toggle').on('mouseenter', function (e) {
-       $('.dropdown-menu, .dropdown').addClass('show');
-    }).on('mouseout', function (e) {
-       $('.dropdown-menu, .dropdown').removeClass('show');
-    });
+	// bootstrap nav dropdown hover — only open the menu under the hovered item
+	$('.nav-item.dropdown').on('mouseenter', function () {
+		$(this).addClass('show');
+		$(this).children('.dropdown-menu').addClass('show');
+	}).on('mouseleave', function () {
+		$(this).removeClass('show');
+		$(this).children('.dropdown-menu').removeClass('show');
+	});
 	
 	// wow animations
 	if( $(window).outerWidth() >= 767 ) {

@@ -10,9 +10,16 @@ type Props = {
   description: string;
   image?: string;
   noIndex?: boolean;
+  legacyTheme?: boolean;
 };
 
-const { title, description, image = "/assets/images/intro1.png", noIndex = false } = Astro.props;
+const {
+  title,
+  description,
+  image = "/assets/images/intro1.png",
+  noIndex = false,
+  legacyTheme = false,
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.domain).toString();
 const fullTitle = `${title} | ${site.shortName}`;
 const analyticsId = site.analyticsId;
@@ -22,7 +29,7 @@ const organizationSchema = {
   name: site.name,
   url: site.domain,
   email: site.email,
-  logo: `${site.domain}/assets/images/SA-logo.png`,
+  logo: `${site.domain}/assets/images/SA-logo.webp`,
 };
 ---
 
@@ -33,11 +40,14 @@ const organizationSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content={site.name} />
     <meta name="description" content={description} />
-    <meta name="keywords" content="Sexaholics Anonymous Kenya, sex addiction recovery Kenya, 12 Step recovery Kenya, SA Kenya, Support for Institutions and Professionals" />
+    <meta
+      name="keywords"
+      content="Sexaholics Anonymous Kenya, sex addiction recovery Kenya, 12 Step recovery Kenya, SA Kenya, Support for Institutions and Professionals"
+    />
     {noIndex && <meta name="robots" content="noindex,nofollow" />}
+    <meta name="format-detection" content="telephone=no" />
     <title>{fullTitle}</title>
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/assets/images/icons/favicon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
@@ -70,18 +80,55 @@ const organizationSchema = {
           section_name: dataset.trackSection || "",
           audience: dataset.trackAudience || "",
           file_name: dataset.trackFile || "",
-          page_location: window.location.pathname
+          page_location: window.location.pathname,
         });
       });
     </script>
     <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}></script>
+    <link rel="shortcut icon" href="/assets/images/icons/favicon.png" type="image/png" />
+    <link rel="icon" href="/assets/images/icons/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/icons/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/icons/apple-touch-icon-120-precomposed.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/icons/apple-touch-icon-76-precomposed.png" />
+    {legacyTheme && (
+      <>
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/assets/fonts/iconfonts.css" />
+        <link rel="stylesheet" href="/assets/css/plugins.css" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="/assets/css/responsive.css" />
+        <link rel="stylesheet" href="/assets/css/color.css" />
+      </>
+    )}
   </head>
   <body>
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-    <WhatsAppFloat />
+    {legacyTheme ? (
+      <div id="dtr-wrapper" class="clearfix">
+        <Header legacyTheme={legacyTheme} />
+        <main id="dtr-main-content">
+          <slot />
+        </main>
+        <Footer legacyTheme={legacyTheme} />
+        <WhatsAppFloat />
+      </div>
+    ) : (
+      <>
+        <Header />
+        <main>
+          <slot />
+        </main>
+        <Footer />
+        <WhatsAppFloat />
+      </>
+    )}
+    {legacyTheme && (
+      <>
+        <script is:inline src="/assets/js/jquery.min.js"></script>
+        <script is:inline src="/assets/js/bootstrap.min.js"></script>
+        <script is:inline src="/assets/js/plugins.js"></script>
+        <script is:inline src="/assets/js/custom.js"></script>
+        <script is:inline src="/assets/js/scroll-reveal.js"></script>
+      </>
+    )}
   </body>
 </html>
