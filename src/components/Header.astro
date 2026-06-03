@@ -14,24 +14,25 @@ const isGroupActive = (children: { href: string }[]) => children.some((item) => 
 
     <details class="nav-shell">
       <summary aria-label="Toggle menu">Menu</summary>
-      <nav class="main-nav" aria-label="Primary">
-        {mainNavigation.map((item) =>
-          item.children ? (
-            <details class="nav-dropdown">
-              <summary class:list={{ active: isGroupActive(item.children) }}>{item.label}</summary>
-              <div class="nav-dropdown-menu">
-                {item.children.map((child) => (
-                  <a href={child.href} class:list={{ active: isActive(child.href) }}>{child.label}</a>
-                ))}
-              </div>
-            </details>
-          ) : (
-            <a href={item.href} class:list={{ active: item.href && isActive(item.href) }}>
-              {item.label}
-            </a>
-          )
-        )}
-      </nav>
     </details>
+
+    <nav class="main-nav" aria-label="Primary">
+      {mainNavigation.map((item) =>
+        item.children ? (
+          <details class="nav-dropdown">
+            <summary class:list={{ active: isGroupActive(item.children) }}>{item.label}</summary>
+            <div class="nav-dropdown-menu">
+              {item.children.map((child) => (
+                <a href={child.href} class:list={{ active: isActive(child.href) }}>{child.label}</a>
+              ))}
+            </div>
+          </details>
+        ) : (
+          <a href={item.href} class:list={{ active: item.href && isActive(item.href) }}>
+            {item.label}
+          </a>
+        )
+      )}
+    </nav>
   </div>
 </header>

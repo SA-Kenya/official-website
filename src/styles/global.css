@@ -257,7 +257,7 @@ li {
   max-width: min(280px, 55vw);
 }
 
-.nav-shell summary {
+.nav-shell {
   display: none;
 }
 
@@ -265,6 +265,7 @@ li {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem;
+  align-items: center;
 }
 
 .main-nav a {
@@ -523,7 +524,12 @@ li {
 }
 
 @media (max-width: 760px) {
+  .header-row {
+    position: relative;
+  }
+
   .nav-shell {
+    display: block;
     position: relative;
   }
 
@@ -542,16 +548,23 @@ li {
   }
 
   .main-nav {
+    display: none;
     position: absolute;
     right: 0;
     top: calc(100% + 0.75rem);
     width: min(320px, calc(100vw - 2rem));
     padding: 0.8rem;
     flex-direction: column;
+    align-items: stretch;
     border: 1px solid var(--line);
     border-radius: 18px;
     background: rgba(255, 253, 249, 0.98);
     box-shadow: var(--shadow);
+    z-index: 30;
+  }
+
+  .nav-shell[open] ~ .main-nav {
+    display: flex;
   }
 
   .button-row {
