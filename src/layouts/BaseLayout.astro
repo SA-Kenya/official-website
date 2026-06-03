@@ -1,0 +1,100 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFloat from "../components/WhatsAppFloat.astro";
+import { site } from "../data/site";
+import "../styles/global.css";
+
+type Props = {
+  title: string;
+  description: string;
+  image?: string;
+  noIndex?: boolean;
+};
+
+const {
+  title,
+  description,
+  image = "/assets/images/intro1.png",
+  noIndex = false,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.domain).toString();
+const fullTitle = `${title} | ${site.shortName}`;
+const analyticsId = site.analyticsId;
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: site.name,
+  url: site.domain,
+  email: site.email,
+  logo: `${site.domain}/assets/images/SA-logo.webp`,
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content={site.name} />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="Sexaholics Anonymous Kenya, sex addiction recovery Kenya, 12 Step recovery Kenya, SA Kenya, Support for Institutions and Professionals"
+    />
+    {noIndex && <meta name="robots" content="noindex,nofollow" />}
+    <meta name="format-detection" content="telephone=no" />
+    <title>{fullTitle}</title>
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, site.domain).toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, site.domain).toString()} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script is:inline define:vars={{ analyticsId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      window.gtag = window.gtag || gtag;
+      gtag("js", new Date());
+      gtag("config", analyticsId, { send_page_view: true });
+      window.saTrack = function (eventName, params) {
+        if (typeof window.gtag === "function") {
+          window.gtag("event", eventName, params || {});
+        }
+      };
+      document.addEventListener("click", function (event) {
+        const target = event.target instanceof Element ? event.target.closest("[data-track-event]") : null;
+        if (!target) return;
+        const dataset = target.dataset;
+        window.saTrack(dataset.trackEvent || "cta_click", {
+          label: dataset.trackLabel || "",
+          section_name: dataset.trackSection || "",
+          audience: dataset.trackAudience || "",
+          file_name: dataset.trackFile || "",
+          page_location: window.location.pathname,
+        });
+      });
+    </script>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}></script>
+    <link rel="shortcut icon" href="/assets/images/icons/favicon.png" type="image/png" />
+    <link rel="icon" href="/assets/images/icons/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/icons/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/icons/apple-touch-icon-120-precomposed.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/icons/apple-touch-icon-76-precomposed.png" />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppFloat />
+  </body>
+</html>

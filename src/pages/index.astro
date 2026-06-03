@@ -1,0 +1,156 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { pamphlets } from "../data/pamphlets";
+import { site } from "../data/site";
+
+const featuredPamphlets = pamphlets.filter((pamphlet) => pamphlet.featured).slice(0, 4);
+const waUrl = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
+
+const learnMore = [
+  {
+    title: "20 Questions",
+    description: "Use the self-test to reflect honestly on whether SA may help you.",
+    href: "/test-yourself/",
+    label: "Test Yourself",
+  },
+  {
+    title: "The problem",
+    description: "Learn how SA describes isolation, fantasy, compulsion, and loss of intimacy.",
+    href: "/problem/",
+    label: "Read more",
+  },
+  {
+    title: "The Solution",
+    description: "Explore surrender, fellowship, and spiritual change through the Twelve Steps.",
+    href: "/solution/",
+    label: "Read more",
+  },
+  {
+    title: "Resources",
+    description: "Download pamphlets, browse the literature library, and see the podcast links.",
+    href: "/resources/",
+    label: "View Resources",
+  },
+];
+---
+
+<BaseLayout
+  title="12 Step Recovery from Sex and Lust Addiction in Kenya"
+  description="SA Kenya offers 12 Step recovery support, literature, meetings, and referral resources for people who still suffer, plus SIP support for professionals and clergy."
+  image="/assets/images/intro1.webp"
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Recovery in Kenya</p>
+        <h1>12 step recovery from sex and lust addiction</h1>
+        <p class="lede">
+          Sexaholics Anonymous is a fellowship of men and women who share experience, strength,
+          and hope so they may solve their common problem and help others recover. The only
+          requirement for membership is a desire to stop lusting and become sexually sober.
+        </p>
+        <p>
+          SA Kenya also offers Support for Institutions and Professionals for referral partners,
+          counselors, clergy, and rehabilitation teams. Browse official literature, SIP resources,
+          and recovery support materials — all in one place.
+        </p>
+        <div class="button-row">
+          <a
+            class="button"
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track-event="whatsapp_click"
+            data-track-section="home-hero"
+            data-track-label="whatsapp-home-hero"
+            >Message on WhatsApp</a
+          >
+          <a class="button-secondary" href="/sip/" data-track-event="sip_cta_click" data-track-section="home-hero" data-track-label="sip-home">Explore SIP</a>
+          <a class="button-ghost" href="/test-yourself/" data-track-event="cta_click" data-track-section="home-hero" data-track-label="self-test-home">Test Yourself</a>
+        </div>
+      </div>
+      <div class="card hero-panel">
+        <img src="/assets/images/intro1.webp" alt="Sunrise scene representing hope and recovery" />
+        <div class="overlay-text">
+          <p class="eyebrow">You are not alone</p>
+          <p>Reach out when you are ready. Recovery is possible through fellowship and the Twelve Steps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <p class="eyebrow">Start here</p>
+      <h2>Learn more</h2>
+      <div class="card-grid">
+        {learnMore.map((item) => (
+          <article class="highlight col-3 feature-card">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+            <a class="button-ghost" href={item.href} data-track-event="cta_click" data-track-section="home-learn-more" data-track-label={item.label}>{item.label}</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <article class="content-shell">
+        <p class="eyebrow">SIP</p>
+        <h2>Support for Institutions and Professionals</h2>
+        <p>
+          SIP helps therapists, counselors, pastors, priests, rehab teams, and other institutions
+          understand what SA is, when it may help, and how to refer someone appropriately.
+        </p>
+        <div class="button-row">
+          <a class="button" href="/sip/" data-track-event="sip_cta_click" data-track-section="home-sip" data-track-label="sip-hub">Visit the SIP hub</a>
+          <a class="button-ghost" href="/sip/professionals/" data-track-event="sip_cta_click" data-track-section="home-sip" data-track-label="sip-professionals">For professionals</a>
+          <a class="button-ghost" href="/sip/clergy/" data-track-event="sip_cta_click" data-track-section="home-sip" data-track-label="sip-clergy">For clergy</a>
+        </div>
+      </article>
+      <aside class="quote-panel">
+        <p class="eyebrow">Immediate priorities</p>
+        <ul class="list-clean">
+          <li>Clear referral path for professionals and clergy</li>
+          <li>Literature and pamphlets for local access</li>
+          <li>Recovery resources that work on mobile and desktop</li>
+          <li>Easy access to meetings, literature, and referral information</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <p class="eyebrow">Literature</p>
+      <h2>Featured pamphlets</h2>
+      <div class="card-grid">
+        {featuredPamphlets.map((pamphlet) => (
+          <article class="resource-card col-3">
+            <div class="cover">
+              {pamphlet.image ? (
+                <img src={pamphlet.image} alt={pamphlet.title} loading="lazy" />
+              ) : (
+                <img src="/assets/images/intro.png" alt={pamphlet.title} loading="lazy" />
+              )}
+            </div>
+            <h3>{pamphlet.title}</h3>
+            <p>{pamphlet.description}</p>
+            <a
+              class="button-secondary"
+              href={pamphlet.file}
+              download
+              data-track-event="pamphlet_download"
+              data-track-file={pamphlet.slug}
+              data-track-section="home-featured-pamphlets"
+              data-track-label={pamphlet.title}
+              >Download PDF</a
+            >
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

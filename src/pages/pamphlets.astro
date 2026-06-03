@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { audienceLabels, pamphlets } from "../data/pamphlets";
+
+const audienceOrder = ["professionals", "clergy", "newcomers", "women", "general", "service"] as const;
+---
+
+<BaseLayout
+  title="Pamphlet Library"
+  description="Download official SA pamphlets hosted on the SA Kenya website for local outreach, referral, and recovery support."
+>
+  <section class="section hero">
+    <div class="container">
+      <p class="eyebrow">Literature library</p>
+      <h1>SA pamphlets</h1>
+      <p class="lede">
+        This library brings together official SA pamphlets for local access through SA Kenya. The
+        collection supports newcomers, members, clergy, and professionals involved in referral or
+        institutional outreach.
+      </p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="quote-panel">
+        <p>
+          These pamphlets originate from the official SA pamphlet collection. They are organized
+          here for easier local access, outreach preparation, and referral follow-up.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {audienceOrder.map((audience) => {
+    const group = pamphlets.filter((pamphlet) => pamphlet.audience.includes(audience));
+    if (group.length === 0) return null;
+
+    return (
+      <section class="section">
+        <div class="container">
+          <p class="eyebrow">{audienceLabels[audience]}</p>
+          <div class="card-grid">
+            {group.map((pamphlet) => (
+              <article class="resource-card col-4">
+                <div class="meta">
+                  {pamphlet.audience.map((tag) => <span class="tag">{audienceLabels[tag]}</span>)}
+                </div>
+                <h3>{pamphlet.title}</h3>
+                <p>{pamphlet.description}</p>
+                <a
+                  class="button-secondary"
+                  href={pamphlet.file}
+                  download
+                  data-track-event="pamphlet_download"
+                  data-track-file={pamphlet.slug}
+                  data-track-section={`pamphlets-${audience}`}
+                  data-track-audience={audience}
+                  data-track-label={pamphlet.title}
+                  >Download PDF</a
+                >
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  })}
+</BaseLayout>

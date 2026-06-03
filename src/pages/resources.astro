@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { pamphlets } from "../data/pamphlets";
+
+const sortedPamphlets = [...pamphlets].sort((a, b) => a.title.localeCompare(b.title));
+
+const externalResources = [
+  {
+    title: "The SA White Book",
+    description: "The basic text of Sexaholics Anonymous, containing our history, the steps, and stories of recovery.",
+    href: "https://store.sa.org/product/sexaholics-anonymous/",
+    label: "Purchase Online",
+  },
+  {
+    title: "ESSAY Magazine",
+    description: "The international quarterly journal of Sexaholics Anonymous, featuring articles by members.",
+    href: "https://essay.sa.org/",
+    label: "Read Online",
+  },
+  {
+    title: "Podcasts",
+    description: "Listen to recovery audio from SA Fireside Chat, The Daily Reprieve, and ESSAY recordings.",
+    href: "/podcasts/",
+    label: "Listen",
+  },
+];
+---
+
+<BaseLayout
+  title="SA Resources"
+  description="Browse official SA pamphlets, literature, and recovery resources available through SA Kenya."
+  image="/assets/images/SA-logo.webp"
+>
+  <section class="section hero">
+    <div class="container">
+      <p class="eyebrow">Literature &amp; media</p>
+      <h1>Recovery resources</h1>
+      <p class="lede">
+        Free SA literature and pamphlets to support recovery, referral, and follow-up.
+      </p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <p class="eyebrow">Local library</p>
+      <h2>SA pamphlets</h2>
+      <p>
+        These pamphlets are collected here for local access. They support newcomers, members,
+        clergy, professionals, and service workers.
+      </p>
+      <div class="card-grid">
+        {sortedPamphlets.map((pamphlet) => (
+          <article class="resource-card col-4">
+            <div class="cover">
+              {pamphlet.image ? (
+                <img src={pamphlet.image} alt={pamphlet.title} loading="lazy" />
+              ) : (
+                <img src="/assets/images/intro.png" alt={pamphlet.title} loading="lazy" />
+              )}
+            </div>
+            <h3>{pamphlet.title}</h3>
+            <p>{pamphlet.description}</p>
+            <a
+              class="button-secondary"
+              href={pamphlet.file}
+              download
+              data-track-event="pamphlet_download"
+              data-track-file={pamphlet.slug}
+              data-track-section="resources"
+              data-track-label={pamphlet.title}
+              >Download PDF</a
+            >
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Beyond pamphlets</p>
+      <h2>Other recommended resources</h2>
+      <div class="card-grid">
+        {externalResources.map((resource) => (
+          <article class="highlight col-4 feature-card">
+            <h3>{resource.title}</h3>
+            <p>{resource.description}</p>
+            <a
+              class="button-ghost"
+              href={resource.href}
+              target={resource.href.startsWith("http") ? "_blank" : undefined}
+              rel={resource.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              >{resource.label}</a
+            >
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

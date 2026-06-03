@@ -1,0 +1,37 @@
+---
+import { mainNavigation } from "../data/site";
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+const isGroupActive = (children: { href: string }[]) => children.some((item) => isActive(item.href));
+---
+
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="/">
+      <img src="/assets/images/SA-logo.webp" alt="Sexaholics Anonymous Kenya" width="279" height="100" />
+    </a>
+
+    <details class="nav-shell">
+      <summary aria-label="Toggle menu">Menu</summary>
+      <nav class="main-nav" aria-label="Primary">
+        {mainNavigation.map((item) =>
+          item.children ? (
+            <details class="nav-dropdown">
+              <summary class:list={{ active: isGroupActive(item.children) }}>{item.label}</summary>
+              <div class="nav-dropdown-menu">
+                {item.children.map((child) => (
+                  <a href={child.href} class:list={{ active: isActive(child.href) }}>{child.label}</a>
+                ))}
+              </div>
+            </details>
+          ) : (
+            <a href={item.href} class:list={{ active: item.href && isActive(item.href) }}>
+              {item.label}
+            </a>
+          )
+        )}
+      </nav>
+    </details>
+  </div>
+</header>

@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+);
+---
+
+<BaseLayout
+  title="Blog and Updates"
+  description="Read updates from SA Kenya on SIP, outreach planning, literature, and recovery-related announcements."
+>
+  <section class="section hero">
+    <div class="container">
+      <p class="eyebrow">Blog & updates</p>
+      <h1>News, outreach, and literature updates</h1>
+      <p class="lede">
+        This section is built for future growth: event announcements, SIP updates, literature
+        highlights, meeting-related notices, and institutional outreach milestones.
+      </p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container card-grid">
+      {posts.map((post) => (
+        <article class="post-card col-6">
+          <p class="post-meta">
+            {post.data.category} · {post.data.publishDate.toLocaleDateString("en-KE", { dateStyle: "medium" })}
+          </p>
+          <h2><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h2>
+          <p>{post.data.description}</p>
+          <a href={`/blog/${post.slug}/`} class="button-ghost">Read article</a>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
