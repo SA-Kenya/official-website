@@ -1,121 +1,75 @@
 ---
 import { site } from "../data/site";
 
-type Props = {
-  legacyTheme?: boolean;
-};
-
-const { legacyTheme = false } = Astro.props;
-const waDigits = site.whatsapp.replace(/\D/g, "");
-const waUrl = `https://wa.me/${waDigits}`;
+const waUrl = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
 ---
 
-{legacyTheme ? (
-  <footer id="contact" class="site-footer dtr-section">
-    <div class="container">
-      <div class="sa-footer-grid">
-        <div class="sa-footer-col">
-          <img src="/assets/images/SA-logo.webp" alt="Sexaholics Anonymous Kenya" class="sa-footer-logo" loading="lazy" />
-          <p class="sa-footer-tagline">12 Step recovery from sex and lust addiction in Kenya</p>
-          <p class="sa-footer-cta">Need to talk? Reach out. You are not alone.</p>
-          <a href={waUrl} class="sa-footer-wa-btn" target="_blank" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="18" height="18">
-              <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157z" />
-            </svg>
-            {site.whatsapp}
-          </a>
-        </div>
-
-        <div class="sa-footer-col">
-          <h6 class="sa-footer-heading">Quick Links</h6>
-          <ul class="sa-footer-list">
-            <li><a href="/">Home</a></li>
-            <li><a href="/problem/">The Problem</a></li>
-            <li><a href="/solution/">The Solution</a></li>
-            <li><a href="/test-yourself/">Self-Test</a></li>
-            <li><a href="/12-steps-12-traditions/">12 Steps &amp; Traditions</a></li>
-            <li><a href="/resources/">Pamphlet Library</a></li>
-            <li><a href="/sip/">SIP</a></li>
-            <li><a href="/blog/">Blog</a></li>
-          </ul>
-        </div>
-
-        <div class="sa-footer-col">
-          <h6 class="sa-footer-heading">Support</h6>
-          <ul class="sa-footer-list">
-            <li><a href="/sip/professionals/">For Professionals</a></li>
-            <li><a href="/sip/clergy/">For Clergy</a></li>
-            <li><a href="/pamphlets/">Official Pamphlets</a></li>
-            <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
-          </ul>
-        </div>
-
-        <div class="sa-footer-col">
-          <h6 class="sa-footer-heading">Recovery Resources</h6>
-          <ul class="sa-footer-list">
-            <li><a href="https://www.sa.org/" target="_blank" rel="noopener noreferrer">Sexaholics Anonymous</a></li>
-            <li><a href="https://www.aa.org/" target="_blank" rel="noopener noreferrer">Alcoholics Anonymous</a></li>
-            <li><a href="https://essay.sa.org/" target="_blank" rel="noopener noreferrer">ESSAY Magazine</a></li>
-            <li><a href="https://www.thedailyreprieve.com/" target="_blank" rel="noopener noreferrer">The Daily Reprieve</a></li>
-            <li><a href="https://safireside.com/" target="_blank" rel="noopener noreferrer">SA Fireside Chat</a></li>
-          </ul>
-        </div>
+<footer id="contact" class="site-footer">
+  <div class="container">
+    <div class="sa-footer-grid">
+      <div class="sa-footer-col">
+        <img src="/assets/images/SA-logo.webp" alt="Sexaholics Anonymous Kenya" class="sa-footer-logo" loading="lazy" />
+        <p class="sa-footer-tagline">12 Step recovery from sex and lust addiction in Kenya</p>
+        <p class="sa-footer-cta">Need to talk? Reach out. You are not alone.</p>
+        <a
+          href={waUrl}
+          class="sa-footer-wa-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-track-event="whatsapp_click"
+          data-track-section="footer"
+          data-track-label="whatsapp-footer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="18" height="18">
+            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157z" />
+          </svg>
+          {site.whatsapp}
+        </a>
       </div>
 
-      <div class="sa-footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Sexaholics Anonymous Kenya. All rights reserved.</p>
-        <a href={`mailto:${site.email}`}>{site.email}</a>
-      </div>
-    </div>
-  </footer>
-) : (
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <p class="eyebrow">Contact</p>
-        <h3>Reach SA Kenya</h3>
-        <p>
-          For meeting guidance, SIP enquiries, or literature-related questions, WhatsApp is the best
-          way to reach us quickly. Email works well for follow-up or more formal enquiries.
-        </p>
-        <p class="footer-whatsapp">
-          <a
-            href={waUrl}
-            rel="noopener noreferrer"
-            target="_blank"
-            data-track-event="whatsapp_click"
-            data-track-section="footer"
-            data-track-label="whatsapp-footer"
-          >
-            WhatsApp {site.whatsapp}
-          </a>
-        </p>
-        <p>
-          <a
-            href={`mailto:${site.email}`}
-            data-track-event="professional_contact_click"
-            data-track-section="footer"
-            data-track-label="email-footer"
-            >{site.email}</a
-          >
-        </p>
-      </div>
-      <div>
-        <p class="eyebrow">Resources</p>
-        <ul class="footer-links">
-          <li><a href="/sip/">Support for Institutions and Professionals</a></li>
-          <li><a href="/pamphlets/">Pamphlet Library</a></li>
-          <li><a href="/blog/">Blog & Updates</a></li>
-          <li><a href="https://www.sa.org/" rel="noreferrer" target="_blank">Official SA Website</a></li>
+      <div class="sa-footer-col">
+        <h6 class="sa-footer-heading">Quick Links</h6>
+        <ul class="sa-footer-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/problem/">The Problem</a></li>
+          <li><a href="/solution/">The Solution</a></li>
+          <li><a href="/test-yourself/">Self-Test</a></li>
+          <li><a href="/12-steps-12-traditions/">12 Steps &amp; Traditions</a></li>
+          <li><a href="/resources/">Pamphlet Library</a></li>
+          <li><a href="/sip/">SIP</a></li>
+          <li><a href="/blog/">Blog</a></li>
         </ul>
       </div>
-      <div>
-        <p class="eyebrow">Important Note</p>
-        <p>
-          SA is a fellowship for recovery. It is not a substitute for emergency support, medical
-          care, psychiatric care, or formal therapy.
-        </p>
+
+      <div class="sa-footer-col">
+        <h6 class="sa-footer-heading">Support</h6>
+        <ul class="sa-footer-list">
+          <li><a href="/sip/professionals/">For Professionals</a></li>
+          <li><a href="/sip/clergy/">For Clergy</a></li>
+          <li><a href="/pamphlets/">Official Pamphlets</a></li>
+          <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        </ul>
+      </div>
+
+      <div class="sa-footer-col">
+        <h6 class="sa-footer-heading">Recovery Resources</h6>
+        <ul class="sa-footer-list">
+          <li><a href="https://www.sa.org/" target="_blank" rel="noopener noreferrer">Sexaholics Anonymous</a></li>
+          <li><a href="https://www.aa.org/" target="_blank" rel="noopener noreferrer">Alcoholics Anonymous</a></li>
+          <li><a href="https://essay.sa.org/" target="_blank" rel="noopener noreferrer">ESSAY Magazine</a></li>
+          <li><a href="https://www.thedailyreprieve.com/" target="_blank" rel="noopener noreferrer">The Daily Reprieve</a></li>
+          <li><a href="https://safireside.com/" target="_blank" rel="noopener noreferrer">SA Fireside Chat</a></li>
+        </ul>
       </div>
     </div>
-  </footer>
-)}
+
+    <div class="sa-footer-bottom">
+      <p>&copy; {new Date().getFullYear()} Sexaholics Anonymous Kenya. All rights reserved.</p>
+      <p class="sa-footer-disclaimer">
+        SA is a fellowship for recovery. It is not a substitute for emergency support, medical care,
+        psychiatric care, or formal therapy.
+      </p>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </div>
+</footer>

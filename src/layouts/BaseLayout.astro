@@ -10,7 +10,6 @@ type Props = {
   description: string;
   image?: string;
   noIndex?: boolean;
-  legacyTheme?: boolean;
 };
 
 const {
@@ -18,7 +17,6 @@ const {
   description,
   image = "/assets/images/intro1.png",
   noIndex = false,
-  legacyTheme = false,
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.domain).toString();
 const fullTitle = `${title} | ${site.shortName}`;
@@ -90,45 +88,13 @@ const organizationSchema = {
     <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/icons/apple-touch-icon-144-precomposed.png" />
     <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/icons/apple-touch-icon-120-precomposed.png" />
     <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/icons/apple-touch-icon-76-precomposed.png" />
-    {legacyTheme && (
-      <>
-        <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="/assets/fonts/iconfonts.css" />
-        <link rel="stylesheet" href="/assets/css/plugins.css" />
-        <link rel="stylesheet" href="/assets/css/style.css" />
-        <link rel="stylesheet" href="/assets/css/responsive.css" />
-        <link rel="stylesheet" href="/assets/css/color.css" />
-      </>
-    )}
   </head>
   <body>
-    {legacyTheme ? (
-      <div id="dtr-wrapper" class="clearfix">
-        <Header legacyTheme={legacyTheme} />
-        <main id="dtr-main-content">
-          <slot />
-        </main>
-        <Footer legacyTheme={legacyTheme} />
-        <WhatsAppFloat />
-      </div>
-    ) : (
-      <>
-        <Header />
-        <main>
-          <slot />
-        </main>
-        <Footer />
-        <WhatsAppFloat />
-      </>
-    )}
-    {legacyTheme && (
-      <>
-        <script is:inline src="/assets/js/jquery.min.js"></script>
-        <script is:inline src="/assets/js/bootstrap.min.js"></script>
-        <script is:inline src="/assets/js/plugins.js"></script>
-        <script is:inline src="/assets/js/custom.js"></script>
-        <script is:inline src="/assets/js/scroll-reveal.js"></script>
-      </>
-    )}
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppFloat />
   </body>
 </html>

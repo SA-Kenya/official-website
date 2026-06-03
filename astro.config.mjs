@@ -5,4 +5,8 @@ export default defineConfig({
   site: "https://sexaholicsanonymous.or.ke",
   integrations: [sitemap()],
   output: "static",
+  redirects: {
+    "/12steps12traditions/": "/12-steps-12-traditions/",
+    "/satest/": "/test-yourself/",
+  },
 });

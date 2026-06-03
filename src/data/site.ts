@@ -9,6 +9,44 @@ export const site = {
   analyticsId: "G-8GEMKQDL5M",
 };
 
+export type NavItem = {
+  label: string;
+  href?: string;
+  children?: { href: string; label: string }[];
+};
+
+export const mainNavigation: NavItem[] = [
+  { label: "Home", href: "/" },
+  {
+    label: "For Newcomers",
+    children: [
+      { href: "/problem/", label: "The Problem" },
+      { href: "/solution/", label: "The Solution" },
+      { href: "/test-yourself/", label: "Test Yourself" },
+    ],
+  },
+  {
+    label: "Resources",
+    children: [
+      { href: "/pamphlets/", label: "Pamphlets" },
+      { href: "/resources/", label: "Pamphlet Library" },
+      { href: "/12-steps-12-traditions/", label: "12 Steps & Traditions" },
+      { href: "/podcasts/", label: "Podcasts" },
+    ],
+  },
+  {
+    label: "SIP",
+    children: [
+      { href: "/sip/", label: "SIP Home" },
+      { href: "/sip/professionals/", label: "For Professionals" },
+      { href: "/sip/clergy/", label: "For Clergy" },
+    ],
+  },
+  { label: "Blog", href: "/blog/" },
+  { label: "Contact Us", href: `mailto:${site.email}` },
+];
+
+/** Flat nav for simple contexts (sitemap, mobile fallbacks). */
 export const navigation = [
   { href: "/", label: "Home" },
   { href: "/problem/", label: "Problem" },

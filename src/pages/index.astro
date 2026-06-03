@@ -5,187 +5,150 @@ import { site } from "../data/site";
 
 const featuredPamphlets = pamphlets.filter((pamphlet) => pamphlet.featured).slice(0, 4);
 const waUrl = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
+
+const learnMore = [
+  {
+    title: "20 Questions",
+    description: "Use the self-test to reflect honestly on whether SA may help you.",
+    href: "/test-yourself/",
+    label: "Test Yourself",
+  },
+  {
+    title: "The problem",
+    description: "Learn how SA describes isolation, fantasy, compulsion, and loss of intimacy.",
+    href: "/problem/",
+    label: "Read more",
+  },
+  {
+    title: "The Solution",
+    description: "Explore surrender, fellowship, and spiritual change through the Twelve Steps.",
+    href: "/solution/",
+    label: "Read more",
+  },
+  {
+    title: "Resources",
+    description: "Download pamphlets, browse the literature library, and see the podcast links.",
+    href: "/resources/",
+    label: "View Resources",
+  },
+];
 ---
 
 <BaseLayout
   title="12 Step Recovery from Sex and Lust Addiction in Kenya"
   description="SA Kenya offers 12 Step recovery support, literature, meetings, and referral resources for people who still suffer, plus SIP support for professionals and clergy."
   image="/assets/images/intro1.webp"
-  legacyTheme={true}
 >
-  <section id="home" class="dtr-section hero-section-top-padding">
-    <div class="container">
-      <div class="row dtr-pt-100 align-items-center">
-        <div class="col-12 col-lg-7">
-          <div class="position-relative z-index bg-white">
-            <div class="dtr-video-box">
-              <div class="dtr-overlay"></div>
-              <img src="/assets/images/intro1.webp" alt="Sunrise scene representing hope and recovery" />
-              <div class="dtr-video-button-wrapper">
-                <div class="color-white">
-                  <a
-                    class="dtr-video-button btn-grad-orange"
-                    href={waUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open WhatsApp chat"
-                    data-track-event="whatsapp_click"
-                    data-track-section="home-hero"
-                    data-track-label="whatsapp-home-hero"></a>
-                </div>
-                <h6 class="color-white dtr-mt-10">Message on WhatsApp</h6>
-              </div>
-            </div>
-          </div>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Recovery in Kenya</p>
+        <h1>12 step recovery from sex and lust addiction</h1>
+        <p class="lede">
+          Sexaholics Anonymous is a fellowship of men and women who share experience, strength,
+          and hope so they may solve their common problem and help others recover. The only
+          requirement for membership is a desire to stop lusting and become sexually sober.
+        </p>
+        <p>
+          SA Kenya also offers Support for Institutions and Professionals for referral partners,
+          counselors, clergy, and rehabilitation teams. Browse official literature, SIP resources,
+          and recovery support materials — all in one place.
+        </p>
+        <div class="button-row">
+          <a
+            class="button"
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track-event="whatsapp_click"
+            data-track-section="home-hero"
+            data-track-label="whatsapp-home-hero"
+            >Message on WhatsApp</a
+          >
+          <a class="button-secondary" href="/sip/" data-track-event="sip_cta_click" data-track-section="home-hero" data-track-label="sip-home">Explore SIP</a>
+          <a class="button-ghost" href="/test-yourself/" data-track-event="cta_click" data-track-section="home-hero" data-track-label="self-test-home">Test Yourself</a>
         </div>
-        <div class="col-12 col-lg-5">
-          <div class="dtr-pt-50 dtr-pl-20">
-            <h4>
-              12 step recovery from
-              <span class="color-orange">sex and lust addiction in Kenya</span>
-            </h4>
-            <p>
-              Sexaholics Anonymous is a fellowship of men and women who share experience, strength,
-              and hope so they may solve their common problem and help others recover. The only
-              requirement for membership is a desire to stop lusting and become sexually sober.
-              SA Kenya also offers Support for Institutions and Professionals for referral partners,
-              counselors, clergy, and rehabilitation teams.
-            </p>
-            <p>
-              The site now keeps the official literature, newer SIP content, and the legacy Dan
-              template together so visitors can find both recovery material and referral support.
-            </p>
-            <div class="button-row">
-              <a class="dtr-btn btn-grad-orange" href="/sip/" data-track-event="sip_cta_click" data-track-section="home-hero" data-track-label="sip-home">Explore SIP</a>
-              <a class="text-link color-orange" href="/resources/" data-track-event="cta_click" data-track-section="home-hero" data-track-label="resources-home">Browse Resources &raquo;</a>
-              <a class="text-link color-orange" href="/test-yourself/" data-track-event="cta_click" data-track-section="home-hero" data-track-label="self-test-home">Test Yourself &raquo;</a>
-            </div>
-          </div>
+      </div>
+      <div class="card hero-panel">
+        <img src="/assets/images/intro1.webp" alt="Sunrise scene representing hope and recovery" />
+        <div class="overlay-text">
+          <p class="eyebrow">You are not alone</p>
+          <p>Reach out when you are ready. Recovery is possible through fellowship and the Twelve Steps.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="about" class="dtr-section dtr-py-50 bg-purple">
-    <span class="divider-dashed border-purple"></span>
-    <div class="container dtr-py-30">
-      <h2 class="text-center dtr-mb-40 color-orange">Learn more</h2>
-      <div class="row">
-        <div class="col-12 col-md-3">
-          <div class="dtr-feature-top dtr-sm-mb-50">
-            <div class="dtr-feature-img"><i class="icon-mbri-question color-white"></i></div>
-            <div class="dtr-feature-content">
-              <p class="text-size-lg color-red">20 Questions</p>
-              <p class="color-white">Use the self-test to reflect honestly on whether SA may help you.</p>
-            </div>
-            <a href="/test-yourself/" class="text-link color-orange dtr-mt-20">Test Yourself &raquo;</a>
-          </div>
-        </div>
-        <div class="col-12 col-md-3 dtr-sm-mb-50">
-          <div class="dtr-feature-top">
-            <div class="dtr-feature-img"><i class="icon-mbri-alert color-white"></i></div>
-            <div class="dtr-feature-content">
-              <p class="text-size-lg color-red">The problem</p>
-              <p class="color-white">Learn how SA describes isolation, fantasy, compulsion, and loss of intimacy.</p>
-            </div>
-            <a href="/problem/" class="text-link color-orange dtr-mt-20">Read more &raquo;</a>
-          </div>
-        </div>
-        <div class="col-12 col-md-3 dtr-sm-mb-50">
-          <div class="dtr-feature-top">
-            <div class="dtr-feature-img"><i class="icon-mbri-users color-white"></i></div>
-            <div class="dtr-feature-content">
-              <p class="text-size-lg color-red">The Solution</p>
-              <p class="color-white">Explore surrender, fellowship, and spiritual change through the Twelve Steps.</p>
-            </div>
-            <a href="/solution/" class="text-link color-orange dtr-mt-20">Read more &raquo;</a>
-          </div>
-        </div>
-        <div class="col-12 col-md-3">
-          <div class="dtr-feature-top">
-            <div class="dtr-feature-img"><i class="icon-mbri-features color-white"></i></div>
-            <div class="dtr-feature-content">
-              <p class="text-size-lg color-red">Resources</p>
-              <p class="color-white">Download pamphlets, browse the literature library, and see the podcast links.</p>
-            </div>
-            <a href="/resources/" class="text-link color-orange dtr-mt-20">View Resources &raquo;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <span class="divider-dashed border-purple"></span>
-  </section>
-
-  <section class="dtr-section dtr-py-100">
+  <section class="section alt">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-12 col-lg-6">
-          <h2 class="color-red">Support for Institutions and Professionals</h2>
-          <p>
-            SIP stands for Support for Institutions and Professionals. It helps therapists,
-            counselors, pastors, priests, rehab teams, and other institutions understand what SA is,
-            when it may help, and how to refer someone appropriately.
-          </p>
-          <div class="button-row">
-            <a class="dtr-btn btn-grad-orange" href="/sip/" data-track-event="sip_cta_click" data-track-section="home-sip" data-track-label="sip-hub">Visit the SIP hub</a>
-            <a class="text-link color-orange" href="/sip/professionals/" data-track-event="sip_cta_click" data-track-section="home-sip" data-track-label="sip-professionals">For professionals &raquo;</a>
-            <a class="text-link color-orange" href="/sip/clergy/" data-track-event="sip_cta_click" data-track-section="home-sip" data-track-label="sip-clergy">For clergy &raquo;</a>
-          </div>
-        </div>
-        <div class="col-12 col-lg-6">
-          <div class="dtr-feature-top">
-            <div class="dtr-feature-content">
-              <p class="text-size-lg color-red">Immediate priorities</p>
-              <ul class="list-clean">
-                <li>Clear referral path for professionals and clergy</li>
-                <li>Literature and pamphlets for local access</li>
-                <li>Recovery resources that still work on mobile and desktop</li>
-                <li>Legacy paths for older links and search results</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <p class="eyebrow">Start here</p>
+      <h2>Learn more</h2>
+      <div class="card-grid">
+        {learnMore.map((item) => (
+          <article class="highlight col-3 feature-card">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+            <a class="button-ghost" href={item.href} data-track-event="cta_click" data-track-section="home-learn-more" data-track-label={item.label}>{item.label}</a>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="dtr-section bg-purple dtr-py-100">
+  <section class="section">
+    <div class="container split">
+      <article class="content-shell">
+        <p class="eyebrow">SIP</p>
+        <h2>Support for Institutions and Professionals</h2>
+        <p>
+          SIP helps therapists, counselors, pastors, priests, rehab teams, and other institutions
+          understand what SA is, when it may help, and how to refer someone appropriately.
+        </p>
+        <div class="button-row">
+          <a class="button" href="/sip/" data-track-event="sip_cta_click" data-track-section="home-sip" data-track-label="sip-hub">Visit the SIP hub</a>
+          <a class="button-ghost" href="/sip/professionals/" data-track-event="sip_cta_click" data-track-section="home-sip" data-track-label="sip-professionals">For professionals</a>
+          <a class="button-ghost" href="/sip/clergy/" data-track-event="sip_cta_click" data-track-section="home-sip" data-track-label="sip-clergy">For clergy</a>
+        </div>
+      </article>
+      <aside class="quote-panel">
+        <p class="eyebrow">Immediate priorities</p>
+        <ul class="list-clean">
+          <li>Clear referral path for professionals and clergy</li>
+          <li>Literature and pamphlets for local access</li>
+          <li>Recovery resources that work on mobile and desktop</li>
+          <li>Easy access to meetings, literature, and referral information</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section alt">
     <div class="container">
-      <h2 class="text-center color-orange dtr-mb-40">Featured literature</h2>
-      <div class="row">
+      <p class="eyebrow">Literature</p>
+      <h2>Featured pamphlets</h2>
+      <div class="card-grid">
         {featuredPamphlets.map((pamphlet) => (
-          <div class="col-12 col-md-6 col-lg-3 dtr-mb-30">
-            <div class="dtr-feature-top h-100 d-flex flex-column justify-content-between p-3 border-light rounded shadow-sm bg-white text-center">
-              <div class="dtr-feature-img dtr-mb-15" style="height: 220px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                {pamphlet.image ? (
-                  <img
-                    src={pamphlet.image}
-                    alt={pamphlet.title}
-                    style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;"
-                  />
-                ) : (
-                  <img src="/assets/images/intro.png" alt={pamphlet.title} style="max-height: 100%; max-width: 100%; object-fit: contain;" />
-                )}
-              </div>
-              <div class="dtr-feature-content">
-                <h6 class="color-orange dtr-mb-15" style="font-size: 1rem; line-height: 1.4;">{pamphlet.title}</h6>
-                <p>{pamphlet.description}</p>
-              </div>
-              <div class="dtr-mt-10">
-                <a
-                  href={pamphlet.file}
-                  download
-                  class="dtr-btn btn-grad-orange btn-sm w-100"
-                  data-track-event="pamphlet_download"
-                  data-track-file={pamphlet.slug}
-                  data-track-section="home-featured-pamphlets"
-                  data-track-label={pamphlet.title}
-                >
-                  Download PDF
-                </a>
-              </div>
+          <article class="resource-card col-3">
+            <div class="cover">
+              {pamphlet.image ? (
+                <img src={pamphlet.image} alt={pamphlet.title} loading="lazy" />
+              ) : (
+                <img src="/assets/images/intro.png" alt={pamphlet.title} loading="lazy" />
+              )}
             </div>
-          </div>
+            <h3>{pamphlet.title}</h3>
+            <p>{pamphlet.description}</p>
+            <a
+              class="button-secondary"
+              href={pamphlet.file}
+              download
+              data-track-event="pamphlet_download"
+              data-track-file={pamphlet.slug}
+              data-track-section="home-featured-pamphlets"
+              data-track-label={pamphlet.title}
+              >Download PDF</a
+            >
+          </article>
         ))}
       </div>
     </div>

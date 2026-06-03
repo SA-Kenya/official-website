@@ -7,21 +7,21 @@ const podcasts = [
     description:
       "Intimate conversations and interviews with members sharing their experience, strength, and hope in recovery.",
     url: "https://safireside.com/",
-    icon: "icon-mbri-play",
+    icon: "🎙️",
   },
   {
     title: "The Daily Reprieve",
     description:
       "A daily recovery podcast with talks, shares, and reflections from the fellowship.",
     url: "https://www.thedailyreprieve.com/",
-    icon: "icon-mbri-music",
+    icon: "🎧",
   },
   {
     title: "ESSAY Audio Recordings",
     description:
       "Listen to selected stories and articles from ESSAY Magazine, read aloud for convenience.",
     url: "https://essay.sa.org/recordings/?language=en",
-    icon: "icon-mbri-desktop",
+    icon: "📻",
   },
 ];
 ---
@@ -30,46 +30,28 @@ const podcasts = [
   title="SA Podcasts"
   description="Listen to recovery podcasts and audio resources from Sexaholics Anonymous and related fellowship media."
   image="/assets/images/intro1.webp"
-  legacyTheme={true}
 >
-  <section class="dtr-section hero-section-top-padding bg-purple">
-    <div class="container dtr-py-100">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h1 class="color-orange dtr-mb-20">Recovery podcasts</h1>
-          <p class="color-white text-size-lg">Listen to experience, strength, and hope on the go.</p>
-        </div>
-      </div>
+  <section class="section hero">
+    <div class="container">
+      <p class="eyebrow">Audio resources</p>
+      <h1>Recovery podcasts</h1>
+      <p class="lede">Listen to experience, strength, and hope on the go.</p>
     </div>
   </section>
 
-  <section class="dtr-section dtr-py-100">
+  <section class="section alt">
     <div class="container">
-      <div class="row dtr-mb-50">
-        <div class="col-12 text-center">
-          <h2 class="color-red">Featured audio resources</h2>
-          <p class="text-size-md">Explore recommended audio resources created by and for members of the fellowship.</p>
-        </div>
-      </div>
-
-      <div class="row justify-content-center">
+      <p class="eyebrow">Listen anywhere</p>
+      <h2>Featured audio resources</h2>
+      <p>Explore recommended audio resources created by and for members of the fellowship.</p>
+      <div class="card-grid">
         {podcasts.map((podcast) => (
-          <div class="col-12 col-md-6 col-lg-4 dtr-mb-30">
-            <div class="dtr-feature-top h-100 d-flex flex-column justify-content-between p-4 border-light rounded shadow-sm bg-light-purple text-center">
-              <div class="dtr-feature-img dtr-mb-20">
-                <i class={`${podcast.icon} color-red`} style="font-size: 3rem;"></i>
-              </div>
-              <div class="dtr-feature-content flex-grow-1">
-                <h4 class="color-orange dtr-mb-15">{podcast.title}</h4>
-                <p class="dtr-mb-20">{podcast.description}</p>
-              </div>
-              <div class="dtr-mt-20">
-                <a href={podcast.url} target="_blank" rel="noopener noreferrer" class="dtr-btn btn-grad-orange w-100">
-                  Listen Now &raquo;
-                </a>
-              </div>
-            </div>
-          </div>
+          <article class="resource-card col-4 feature-card">
+            <span class="feature-icon" aria-hidden="true">{podcast.icon}</span>
+            <h3>{podcast.title}</h3>
+            <p>{podcast.description}</p>
+            <a class="button" href={podcast.url} target="_blank" rel="noopener noreferrer">Listen now</a>
+          </article>
         ))}
       </div>
     </div>

@@ -3,110 +3,98 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { pamphlets } from "../data/pamphlets";
 
 const sortedPamphlets = [...pamphlets].sort((a, b) => a.title.localeCompare(b.title));
+
+const externalResources = [
+  {
+    title: "The SA White Book",
+    description: "The basic text of Sexaholics Anonymous, containing our history, the steps, and stories of recovery.",
+    href: "https://store.sa.org/product/sexaholics-anonymous/",
+    label: "Purchase Online",
+  },
+  {
+    title: "ESSAY Magazine",
+    description: "The international quarterly journal of Sexaholics Anonymous, featuring articles by members.",
+    href: "https://essay.sa.org/",
+    label: "Read Online",
+  },
+  {
+    title: "Podcasts",
+    description: "Listen to recovery audio from SA Fireside Chat, The Daily Reprieve, and ESSAY recordings.",
+    href: "/podcasts/",
+    label: "Listen",
+  },
+];
 ---
 
 <BaseLayout
   title="SA Resources"
   description="Browse official SA pamphlets, literature, and recovery resources available through SA Kenya."
   image="/assets/images/SA-logo.webp"
-  legacyTheme={true}
 >
-  <section class="dtr-section hero-section-top-padding bg-purple">
-    <div class="container dtr-py-100">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h1 class="color-orange dtr-mb-20">Recovery resources</h1>
-          <p class="color-white text-size-lg">Free SA literature and pamphlets to support recovery, referral, and follow-up.</p>
-        </div>
+  <section class="section hero">
+    <div class="container">
+      <p class="eyebrow">Literature &amp; media</p>
+      <h1>Recovery resources</h1>
+      <p class="lede">
+        Free SA literature and pamphlets to support recovery, referral, and follow-up.
+      </p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <p class="eyebrow">Local library</p>
+      <h2>SA pamphlets</h2>
+      <p>
+        These pamphlets are collected here for local access. They support newcomers, members,
+        clergy, professionals, and service workers.
+      </p>
+      <div class="card-grid">
+        {sortedPamphlets.map((pamphlet) => (
+          <article class="resource-card col-4">
+            <div class="cover">
+              {pamphlet.image ? (
+                <img src={pamphlet.image} alt={pamphlet.title} loading="lazy" />
+              ) : (
+                <img src="/assets/images/intro.png" alt={pamphlet.title} loading="lazy" />
+              )}
+            </div>
+            <h3>{pamphlet.title}</h3>
+            <p>{pamphlet.description}</p>
+            <a
+              class="button-secondary"
+              href={pamphlet.file}
+              download
+              data-track-event="pamphlet_download"
+              data-track-file={pamphlet.slug}
+              data-track-section="resources"
+              data-track-label={pamphlet.title}
+              >Download PDF</a
+            >
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="dtr-section dtr-py-100">
+  <section class="section">
     <div class="container">
-      <div class="row dtr-mb-50">
-        <div class="col-12 text-center">
-          <h2 class="color-red">SA pamphlets</h2>
-          <p class="text-size-md">
-            These pamphlets are collected here for local access. They support newcomers, members,
-            clergy, professionals, and service workers.
-          </p>
-        </div>
-      </div>
-
-      <div class="row">
-        {sortedPamphlets.map((pamphlet) => (
-          <div class="col-12 col-sm-6 col-lg-4 dtr-mb-30">
-            <div class="dtr-feature-top h-100 d-flex flex-column justify-content-between p-3 border-light rounded shadow-sm bg-light-purple text-center">
-              <div class="dtr-feature-img dtr-mb-15" style="height: 220px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                {pamphlet.image ? (
-                  <img
-                    src={pamphlet.image}
-                    alt={pamphlet.title}
-                    style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.08);"
-                  />
-                ) : (
-                  <img src="/assets/images/intro.png" alt={pamphlet.title} style="max-height: 100%; max-width: 100%; object-fit: contain;" />
-                )}
-              </div>
-              <div class="dtr-feature-content">
-                <h6 class="color-orange dtr-mb-15" style="font-size: 1rem; line-height: 1.4;">{pamphlet.title}</h6>
-                <p>{pamphlet.description}</p>
-              </div>
-              <div class="dtr-mt-10">
-                <a
-                  href={pamphlet.file}
-                  download
-                  class="dtr-btn btn-grad-orange btn-sm w-100"
-                  data-track-event="pamphlet_download"
-                  data-track-file={pamphlet.slug}
-                  data-track-section="resources"
-                  data-track-label={pamphlet.title}
-                >
-                  Download PDF
-                </a>
-              </div>
-            </div>
-          </div>
+      <p class="eyebrow">Beyond pamphlets</p>
+      <h2>Other recommended resources</h2>
+      <div class="card-grid">
+        {externalResources.map((resource) => (
+          <article class="highlight col-4 feature-card">
+            <h3>{resource.title}</h3>
+            <p>{resource.description}</p>
+            <a
+              class="button-ghost"
+              href={resource.href}
+              target={resource.href.startsWith("http") ? "_blank" : undefined}
+              rel={resource.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              >{resource.label}</a
+            >
+          </article>
         ))}
-      </div>
-
-      <div class="row dtr-mt-100">
-        <div class="col-12 text-center">
-          <h3 class="color-red dtr-mb-30">Other recommended resources</h3>
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-4 dtr-mb-30">
-              <div class="dtr-feature-top h-100">
-                <div class="dtr-feature-img"><i class="icon-mbri-features color-white"></i></div>
-                <div class="dtr-feature-content">
-                  <h5 class="color-orange">The SA White Book</h5>
-                  <p>The basic text of Sexaholics Anonymous, containing our history, the steps, and stories of recovery.</p>
-                  <a href="https://store.sa.org/product/sexaholics-anonymous/" target="_blank" rel="noopener noreferrer" class="text-link color-red">Purchase Online &raquo;</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-4 dtr-mb-30">
-              <div class="dtr-feature-top h-100">
-                <div class="dtr-feature-img"><i class="icon-mbri-print color-white"></i></div>
-                <div class="dtr-feature-content">
-                  <h5 class="color-orange">ESSAY Magazine</h5>
-                  <p>The international quarterly journal of Sexaholics Anonymous, featuring articles by members.</p>
-                  <a href="https://essay.sa.org/" target="_blank" rel="noopener noreferrer" class="text-link color-red">Read Online &raquo;</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-4 dtr-mb-30">
-              <div class="dtr-feature-top h-100">
-                <div class="dtr-feature-img"><i class="icon-mbri-music color-white"></i></div>
-                <div class="dtr-feature-content">
-                  <h5 class="color-orange">Podcasts</h5>
-                  <p>Listen to recovery audio from SA Fireside Chat, The Daily Reprieve, and ESSAY recordings.</p>
-                  <a href="/podcasts/" class="text-link color-red">Listen &raquo;</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>

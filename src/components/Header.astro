@@ -1,129 +1,37 @@
 ---
-import { navigation, site } from "../data/site";
+import { mainNavigation } from "../data/site";
 
-type Props = {
-  legacyTheme?: boolean;
-};
-
-const { legacyTheme = false } = Astro.props;
 const pathname = Astro.url.pathname;
 const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+const isGroupActive = (children: { href: string }[]) => children.some((item) => isActive(item.href));
 ---
 
-{legacyTheme ? (
-  <>
-    <div class="dtr-responsive-header fixed-top">
-      <div class="container">
-        <a href="/">
-          <img src="/assets/images/SA-logo.webp" alt="Sexaholics Anonymous Kenya logo" loading="lazy" />
-        </a>
-        <button id="dtr-menu-button" class="dtr-hamburger" type="button" aria-label="Toggle navigation menu">
-          <span class="dtr-hamburger-lines-wrapper"><span class="dtr-hamburger-lines"></span></span>
-        </button>
-      </div>
-      <div class="dtr-responsive-header-menu"></div>
-    </div>
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="/">
+      <img src="/assets/images/SA-logo.webp" alt="Sexaholics Anonymous Kenya" width="279" height="100" />
+    </a>
 
-    <header id="dtr-header-global" class="fixed-top">
-      <div class="container">
-        <div class="d-flex align-items-center justify-content-between">
-          <div class="dtr-header-left">
-            <a class="logo-default dtr-scroll-link" href="/">
-              <img src="/assets/images/SA-logo.webp" alt="Sexaholics Anonymous Kenya logo" loading="lazy" />
-            </a>
-            <a class="logo-alt dtr-scroll-link" href="/">
-              <img src="/assets/images/SA-logo.webp" alt="Sexaholics Anonymous Kenya logo" loading="lazy" />
-            </a>
-          </div>
-          <div class="main-navigation navbar navbar-expand-lg ml-auto">
-            <ul class="dtr-scrollspy navbar-nav dtr-nav dark-nav-on-load dark-nav-on-scroll">
-              <li class="nav-item">
-                <a class="nav-link" href="/" aria-current={isActive("/") ? "page" : undefined}>Home</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="newcomersDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  For Newcomers
-                </a>
-                <div class="dropdown-menu" aria-labelledby="newcomersDropdown">
-                  <a class="dropdown-item" href="/problem/">The Problem</a>
-                  <a class="dropdown-item" href="/solution/">The Solution</a>
-                  <a class="dropdown-item" href="/test-yourself/">Test Yourself</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="resourcesDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Resources
-                </a>
-                <div class="dropdown-menu" aria-labelledby="resourcesDropdown">
-                  <a class="dropdown-item" href="/pamphlets/">Pamphlets</a>
-                  <a class="dropdown-item" href="/resources/">Pamphlet Library</a>
-                  <a class="dropdown-item" href="/12-steps-12-traditions/">12 Steps &amp; Traditions</a>
-                  <a class="dropdown-item" href="/podcasts/">Podcasts</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="sipDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  SIP
-                </a>
-                <div class="dropdown-menu" aria-labelledby="sipDropdown">
-                  <a class="dropdown-item" href="/sip/">SIP Home</a>
-                  <a class="dropdown-item" href="/sip/professionals/">For Professionals</a>
-                  <a class="dropdown-item" href="/sip/clergy/">For Clergy</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/blog/">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href={`mailto:${site.email}`}>Contact Us</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </header>
-  </>
-) : (
-  <header class="site-header">
-    <div class="container header-row">
-      <a class="brand" href="/">
-        <img src="/assets/images/SA-logo.webp" alt="Sexaholics Anonymous" width="279" height="100" />
-      </a>
-
-      <details class="nav-shell">
-        <summary aria-label="Toggle menu">Menu</summary>
-        <nav class="main-nav" aria-label="Primary">
-          {navigation.map((item) => (
-            <a href={item.href} class:list={{ active: isActive(item.href) }}>
+    <details class="nav-shell">
+      <summary aria-label="Toggle menu">Menu</summary>
+      <nav class="main-nav" aria-label="Primary">
+        {mainNavigation.map((item) =>
+          item.children ? (
+            <details class="nav-dropdown">
+              <summary class:list={{ active: isGroupActive(item.children) }}>{item.label}</summary>
+              <div class="nav-dropdown-menu">
+                {item.children.map((child) => (
+                  <a href={child.href} class:list={{ active: isActive(child.href) }}>{child.label}</a>
+                ))}
+              </div>
+            </details>
+          ) : (
+            <a href={item.href} class:list={{ active: item.href && isActive(item.href) }}>
               {item.label}
             </a>
-          ))}
-        </nav>
-      </details>
-    </div>
-  </header>
-)}
+          )
+        )}
+      </nav>
+    </details>
+  </div>
+</header>
