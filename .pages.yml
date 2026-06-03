@@ -1,0 +1,64 @@
+media:
+  input: public/assets/images/blog
+  output: /assets/images/blog
+
+settings:
+  commit:
+    identity: user
+
+content:
+  - name: blog
+    label: Blog
+    type: collection
+    path: src/content/blog
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      primary: title
+      sort: publishDate
+      order: desc
+      fields: [title, category, publishDate, draft]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: description
+        label: Description
+        type: text
+        required: true
+
+      - name: publishDate
+        label: Publish date
+        type: date
+        required: true
+
+      - name: author
+        label: Author
+        type: string
+        default: SA Kenya
+
+      - name: category
+        label: Category
+        type: select
+        options:
+          values: [SIP, Updates, Literature, Events, Meetings]
+
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+
+      - name: draft
+        label: Draft
+        type: boolean
+        default: false
+
+      - name: featuredImage
+        label: Featured image
+        type: image
+
+      - name: body
+        label: Body
+        type: rich-text
